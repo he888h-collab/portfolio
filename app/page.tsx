@@ -5,32 +5,39 @@ import { useEffect, useState } from "react";
 const projects = [
   {
     id: "01",
-    title: "NEBULA / 数字艺术节",
-    type: "VISUAL IDENTITY · 2025",
-    image: "https://assets.lummi.ai/assets/QmbDDrBcyWzhRj5HkeU3eM2N1CQVfAuMb2zAj3t34mfAsx",
+    title: "AI 电商视觉自动化系统",
+    type: "AI WORKFLOW · E-COMMERCE",
+    image: "/portfolio/ai-visual-system.jpg",
     size: "wide",
   },
   {
     id: "02",
-    title: "VOID / 时装视觉实验",
-    type: "ART DIRECTION · 2024",
-    image: "https://assets.lummi.ai/assets/Qmd9cGcj7NPdjKh4fwH8wdiKyECKMRmLkj22ZAyDzrhhHP",
+    title: "蛮蛮 / 原创 IP 视觉设计",
+    type: "IP DESIGN · 3D VISUAL",
+    image: "/portfolio/manman-ip.jpg",
     size: "tall",
   },
   {
     id: "03",
-    title: "SYNTH / 品牌焕新",
-    type: "BRAND SYSTEM · 2024",
-    image: "https://assets.lummi.ai/assets/QmTqMzCZnrcdhcCXiLUkKJowTH9KuwWgrLoPeMcZcbGpro",
+    title: "豪士豪麦 / 品牌整合传播",
+    type: "BRAND CAMPAIGN · VISUAL DESIGN",
+    image: "/portfolio/haoshi-brand.jpg",
     size: "standard",
+  },
+  {
+    id: "04",
+    title: "雾隐岛 / UE5 场景叙事",
+    type: "UE5 ENVIRONMENT · GAME VISUAL",
+    image: "/portfolio/foggy-island.jpg",
+    size: "wide",
   },
 ];
 
 const strengths = [
-  ["01", "视觉策略", "从品牌语境出发，将抽象目标转译为清晰、有辨识度的视觉方向。"],
-  ["02", "创意概念", "以概念驱动设计，在克制的系统中创造令人记住的视觉瞬间。"],
-  ["03", "品牌系统", "建立可持续延展的字体、色彩、图形与影像规范，保持跨媒介一致性。"],
-  ["04", "动态叙事", "用节奏、镜头与交互增强信息层级，让品牌在数字空间里真正运动起来。"],
+  ["01", "AI 视觉工作流", "熟练运用 ComfyUI、WebUI 与 Agent 工作流，将 AI 生成能力接入真实设计产出链路。"],
+  ["02", "复合视觉能力", "覆盖平面、三维、动效、UI 原型与视频包装，可独立完成从主视觉到延展物料的交付。"],
+  ["03", "品牌与电商", "具备活动主视觉、电商主图、直播封面与可复用模板体系的实战经验。"],
+  ["04", "逻辑与执行", "目标导向、自律高效，能够拆解复杂问题、预判风险并持续复盘优化工作方法。"],
 ];
 
 export default function Home() {
@@ -47,7 +54,7 @@ export default function Home() {
     <main>
       <header className={`nav-wrap ${scrolled ? "is-scrolled" : ""}`}>
         <nav className="nav shell" aria-label="主导航">
-          <a className="brand" href="#top" aria-label="回到首页"><span>Y.</span>STUDIO</a>
+          <a className="brand" href="#top" aria-label="回到首页"><span>X.</span>XINYUE</a>
           <div className="nav-links">
             <a href="#about">关于</a>
             <a href="#work">项目</a>
@@ -64,10 +71,10 @@ export default function Home() {
         <div className="hero-shade" />
         <div className="hero-grid" />
         <div className="hero-content shell">
-          <div className="hero-kicker"><span>Independent visual designer</span><span>Shanghai · China</span></div>
-          <h1><span>DESIGNING</span><span className="outline">VISUAL IMPACT</span></h1>
+          <div className="hero-kicker"><span>Visual designer · AI creator</span><span>Beijing · China</span></div>
+          <h1><span>XINYUE XU</span><span className="outline">VISUAL DESIGN</span></h1>
           <div className="hero-bottom">
-            <p>以策略为起点，以视觉为语言。<br />为品牌构建清晰、前沿且耐看的视觉体验。</p>
+            <p>融合设计与 AI 生成技术，<br />把视觉创意转化为稳定、高效的真实产出。</p>
             <a className="round-link" href="#work" aria-label="浏览精选项目"><span>↘</span><small>VIEW WORK</small></a>
           </div>
         </div>
@@ -78,26 +85,31 @@ export default function Home() {
         <div className="section-label"><span>01</span><p>ABOUT / 个人经历</p></div>
         <div className="about-layout">
           <div className="portrait-wrap">
-            <img src="https://images.squarespace-cdn.com/content/v1/52d59ef8e4b077750335a1d0/1467095664488-VORAQ2KK3NFJHW3SKGRQ/image-asset.jpeg" alt="视觉设计师肖像占位图" />
-            <span className="portrait-tag">OPEN FOR PROJECTS · 2026</span>
+            <img src="/portfolio/xuxinyue-portrait.jpg" alt="视觉设计师许馨月" />
+            <span className="portrait-tag">AVAILABLE FOR VISUAL DESIGN ROLE</span>
           </div>
           <div className="about-copy">
-            <p className="eyebrow">HELLO, I&apos;M A VISUAL DESIGNER.</p>
-            <h2>让视觉不止于<br /><em>好看。</em></h2>
-            <p className="intro">我是一名专注于品牌视觉、数字体验与创意表达的视觉设计师。擅长在策略与美学之间寻找平衡，把复杂的信息转化为简洁、准确、有情绪的设计语言。</p>
+            <p className="eyebrow">HELLO, I&apos;M XINYUE XU.</p>
+            <h2>设计专业出身，<br /><em>用 AI 放大创意。</em></h2>
+            <p className="intro">北京科技大学视觉传达设计本科在读。系统掌握平面、三维、动效与 UI 原型设计，熟练运用 ComfyUI、WebUI 与 Agent 工作流，将 AI 生成能力融入从主视觉、物料、海报到视频包装的完整产出链路。</p>
             <div className="meta-grid">
-              <div><small>BASED IN</small><strong>SHANGHAI, CN</strong></div>
-              <div><small>CONTACT</small><a href="mailto:hello@yourstudio.design">HELLO@YOURSTUDIO.DESIGN ↗</a></div>
-              <div><small>FOCUS</small><strong>BRAND / DIGITAL / MOTION</strong></div>
-              <div><small>LANGUAGE</small><strong>中文 / ENGLISH</strong></div>
+              <div><small>EDUCATION</small><strong>北京科技大学 · 视觉传达设计</strong></div>
+              <div><small>CONTACT</small><a href="mailto:xuxinyue_2027@163.com">XUXINYUE_2027@163.COM ↗</a></div>
+              <div><small>FOCUS</small><strong>AI VISUAL / BRAND / 3D / MOTION</strong></div>
+              <div><small>PHONE</small><a href="tel:+8613261482033">132 6148 2033</a></div>
+            </div>
+            <div className="experience-list">
+              <div><span>2026.07—09</span><strong>金山夏令营</strong><p>AI 视觉生成工作流实践</p></div>
+              <div><span>2025.10—2026.02</span><strong>新东方教育科技集团</strong><p>视觉设计实习生</p></div>
+              <div><span>2025.05—09</span><strong>北京与爱为舞科技有限公司</strong><p>平面设计实习生</p></div>
             </div>
           </div>
         </div>
         <div className="stats">
-          <div><strong>06<sup>+</sup></strong><span>YEARS EXPERIENCE<br />设计经验</span></div>
-          <div><strong>48<sup>+</sup></strong><span>PROJECTS DELIVERED<br />落地项目</span></div>
-          <div><strong>12</strong><span>BRANDS SERVED<br />合作品牌</span></div>
-          <div><strong>08</strong><span>INDUSTRY AWARDS<br />设计奖项</span></div>
+          <div><strong>03</strong><span>INTERNSHIPS<br />实习经历</span></div>
+          <div><strong>04</strong><span>CORE PROJECTS<br />核心项目</span></div>
+          <div><strong>02</strong><span>DESIGN AWARDS<br />项目奖项</span></div>
+          <div><strong>05<sup>+</sup></strong><span>AI / 3D TOOLS<br />创作工具</span></div>
         </div>
       </section>
 
@@ -106,7 +118,7 @@ export default function Home() {
           <div className="section-label"><span>02</span><p>SELECTED WORK / 精选项目</p></div>
           <div className="work-head">
             <h2>SELECTED<br /><em>WORKS</em></h2>
-            <p>一组关于品牌、文化与数字体验的视觉实践。<br />每个项目都是一次新的观察与重构。</p>
+            <p>从 AI 电商生产链路、原创 IP、品牌传播到 UE5 场景，<br />探索技术、叙事与商业视觉之间的连接。</p>
           </div>
         </div>
         <div className="project-list shell">
@@ -127,7 +139,7 @@ export default function Home() {
 
       <section className="strengths section shell" id="strengths">
         <div className="section-label"><span>03</span><p>CAPABILITIES / 个人优势</p></div>
-        <div className="strength-head"><h2>HOW I<br /><em>CREATE</em></h2><p>不是单一风格的复制，<br />而是为每个问题寻找准确的视觉答案。</p></div>
+        <div className="strength-head"><h2>HOW I<br /><em>CREATE</em></h2><p>兼顾创意表现与生产效率，<br />让前沿工具真正服务于设计结果。</p></div>
         <div className="strength-grid">
           {strengths.map(([id, title, text]) => (
             <article className="strength-card" key={id}>
@@ -141,13 +153,13 @@ export default function Home() {
         <div className="contact-glow" />
         <div className="shell contact-inner">
           <div className="section-label"><span>04</span><p>CONTACT / 保持联系</p></div>
-          <div className="availability"><i /> AVAILABLE FOR SELECTED PROJECTS</div>
-          <h2>LET&apos;S MAKE<br /><em>SOMETHING</em> MATTER.</h2>
-          <a className="email" href="mailto:hello@yourstudio.design">HELLO@YOURSTUDIO.DESIGN <span>↗</span></a>
+          <div className="availability"><i /> OPEN TO VISUAL DESIGN OPPORTUNITIES</div>
+          <h2>LET&apos;S CREATE<br /><em>THE NEXT</em> VISUAL.</h2>
+          <a className="email" href="mailto:xuxinyue_2027@163.com">XUXINYUE_2027@163.COM <span>↗</span></a>
           <div className="contact-bottom">
-            <p>视觉设计 · 品牌系统 · 数字体验 · 动态视觉</p>
-            <div><a href="#">BEHANCE ↗</a><a href="#">INSTAGRAM ↗</a><a href="#">LINKEDIN ↗</a></div>
-            <p>© 2026 Y.STUDIO<br />ALL RIGHTS RESERVED</p>
+            <p>AI 视觉 · 品牌设计 · 三维动效 · UI 原型</p>
+            <div><a href="mailto:xuxinyue_2027@163.com">EMAIL ↗</a><a href="tel:+8613261482033">PHONE ↗</a><a href="#work">PORTFOLIO ↗</a></div>
+            <p>© 2026 XINYUE XU<br />ALL RIGHTS RESERVED</p>
           </div>
         </div>
       </footer>

@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Y.Studio — Visual Designer Portfolio",
-  description: "视觉设计师个人作品集，聚焦品牌视觉、数字体验与动态叙事。",
+  title: "许馨月 — 视觉设计师作品集",
+  description: "许馨月的视觉设计作品集，聚焦 AI 视觉工作流、品牌、电商、三维与动态设计。",
   openGraph: {
-    title: "Y.Studio — Visual Designer Portfolio",
-    description: "Designing visual impact through brand, digital and motion.",
+    title: "许馨月 — 视觉设计师作品集",
+    description: "AI visual workflows, brand, 3D and motion design.",
     type: "website",
-    images: [{ url: "/og.png", width: 2184, height: 941, alt: "Designing Visual Impact — Y.Studio" }],
+    images: [{ url: "/og.png", width: 2184, height: 941, alt: "许馨月视觉设计作品集" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Y.Studio — Visual Designer Portfolio",
-    description: "Designing visual impact through brand, digital and motion.",
+    title: "许馨月 — 视觉设计师作品集",
+    description: "AI visual workflows, brand, 3D and motion design.",
     images: ["/og.png"],
   },
 };
