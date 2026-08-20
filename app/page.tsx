@@ -26,17 +26,13 @@ export default function Home() {
         .map(id => document.getElementById(id)).filter((section): section is HTMLElement => Boolean(section)).sort((a,b) => a.offsetTop-b.offsetTop);
       const current = sections.reduce((active, section) => section.offsetTop <= marker ? section.id : active, "about");
       setActiveSection(current);
-      const gallery = document.getElementById("work");
-      if (gallery) {
-        const travel = Math.max(gallery.offsetHeight - window.innerHeight, 1);
-        const progress = Math.min(1, Math.max(0, (window.scrollY - gallery.offsetTop) / travel));
-        gallery.style.setProperty("--gallery-progress", String(progress));
-      }
     };
     update(); window.addEventListener("scroll", update, { passive: true });
     const reveal = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("is-visible"); }), { threshold:.18, rootMargin:"0px 0px -8%" });
     document.querySelectorAll(".timeline-item").forEach(item => reveal.observe(item));
-    return () => { window.removeEventListener("scroll", update); reveal.disconnect(); };
+    const galleryWatch = new IntersectionObserver(entries => entries.forEach(entry => entry.target.classList.toggle("is-playing", entry.isIntersecting)), { threshold:.28 });
+    const gallery = document.getElementById("work"); if(gallery) galleryWatch.observe(gallery);
+    return () => { window.removeEventListener("scroll", update); reveal.disconnect(); galleryWatch.disconnect(); };
   }, []);
   return <main id="top">
     <section className="intro-hero" id="about">
