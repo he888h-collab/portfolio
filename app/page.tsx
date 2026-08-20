@@ -26,6 +26,12 @@ export default function Home() {
         .map(id => document.getElementById(id)).filter((section): section is HTMLElement => Boolean(section)).sort((a,b) => a.offsetTop-b.offsetTop);
       const current = sections.reduce((active, section) => section.offsetTop <= marker ? section.id : active, "about");
       setActiveSection(current);
+      const gallery = document.getElementById("work");
+      if (gallery) {
+        const travel = Math.max(gallery.offsetHeight - window.innerHeight, 1);
+        const progress = Math.min(1, Math.max(0, (window.scrollY - gallery.offsetTop) / travel));
+        gallery.style.setProperty("--gallery-progress", String(progress));
+      }
     };
     update(); window.addEventListener("scroll", update, { passive: true });
     const reveal = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("is-visible"); }), { threshold:.18, rootMargin:"0px 0px -8%" });
@@ -63,6 +69,13 @@ export default function Home() {
         </article>)}
       </div>
     </section>
+    <section className="scroll-gallery" id="work">
+      <div className="gallery-sticky">
+        <div className="gallery-label"><span>03 / SELECTED WORKS</span><p>个人作品 / IMAGE PLACEHOLDERS</p></div>
+        <div className="gallery-row gallery-row-top">{[1,2,3,4,5,6].map((n)=><a href="#work-details" className={`gallery-tile tile-${n}`} key={`top-${n}`}><b>{String(n).padStart(2,"0")}</b><span>PROJECT IMAGE</span><small>后续添加作品图片</small></a>)}</div>
+        <div className="gallery-row gallery-row-bottom">{[7,8,9,10,11,12].map((n)=><a href="#work-details" className={`gallery-tile tile-${n}`} key={`bottom-${n}`}><b>{String(n).padStart(2,"0")}</b><span>PROJECT IMAGE</span><small>后续添加作品图片</small></a>)}</div>
+      </div>
+    </section>
     <section className="orbit-about" id="profile">
       <div className="orbit orbit-one" /><div className="orbit orbit-two" />
       {Array.from({length:10}).map((_,i)=><div className="orbit-card" style={{"--i":i} as React.CSSProperties} key={i}><span>IMAGE<br />PLACEHOLDER</span></div>)}
@@ -82,7 +95,7 @@ export default function Home() {
       <div className="section-top"><p>04 / ADVANTAGES</p><span>WHAT I DO</span></div><div className="cap-heading"><h2>CAPABILITIES</h2><p>技术不是风格本身，<br />它是放大创意的另一种语言。</p></div>
       <div className="cap-grid">{capabilities.map(([id,title,tools,text])=><article key={id}><span>{id}</span><div className="cap-shape"/><h3>{title}</h3><small>{tools}</small><p>{text}</p></article>)}</div>
     </section>
-    <section className="work section-pad" id="work">
+    <section className="work section-pad" id="work-details">
       <div className="section-top"><p>05 / SELECTED WORK</p><span>IMAGE-FREE TEMPLATE</span></div><div className="work-heading"><h2>SELECTED<br /><i>WORKS</i></h2><p>当前版本暂不放置项目图片。<br />以下模块已预留标题、分类与封面位置，后续可直接替换。</p></div>
       <div className="work-grid">{placeholders.map((label,i)=><article className={i===0||i===3?"work-card work-card--wide":"work-card"} key={label}><div className="work-placeholder"><span>ADD PROJECT IMAGE</span><b>{String(i+1).padStart(2,"0")}</b><i>↗</i></div><div><h3>{label.split(" / ")[1]}</h3><p>{label.split(" / ")[0]} / CASE STUDY PLACEHOLDER</p></div></article>)}</div>
     </section>
