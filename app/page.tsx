@@ -23,16 +23,26 @@ export default function Home() {
     return () => window.removeEventListener("scroll", update);
   }, []);
   return <main id="top">
-    <header className={`topbar ${scrolled ? "topbar--solid" : ""}`}>
-      <a className="wordmark" href="#top"><i /> XINYUE XU</a>
-      <nav aria-label="主导航"><a href="#about">ABOUT</a><a href="#experience">EXPERIENCE</a><a href="#work">WORK</a></nav>
-      <a className="contact-pill" href="#contact">CONTACT <span>↗</span></a>
-    </header>
     <section className="intro-hero">
-      <div className="hero-meta"><span>VISUAL DESIGNER</span><span>BEIJING · CN</span><span>PORTFOLIO / 2026</span></div>
-      <div className="hero-title"><p>HELLO, I&apos;M</p><h1>XINYUE</h1><h1 className="hero-outline">XU.</h1></div>
-      <div className="hero-note"><span>01</span><p>一位将视觉设计、三维与 AI 生成技术<br />连接起来的年轻设计师。</p></div>
-      <a className="scroll-cue" href="#about"><span>SCROLL TO EXPLORE</span><b>↓</b></a>
+      <header className={`topbar ${scrolled ? "topbar--solid" : ""}`}>
+        <nav aria-label="主导航"><a className="active" href="#about">关于我</a><a href="#experience">工作经历</a><a href="#work">个人作品</a><a href="#advantages">个人优势</a><a href="#contact">联系我</a></nav>
+      </header>
+      <div className="hero-layout">
+        <div className="hero-copy">
+          <p className="hello">HELLO / 你好</p>
+          <h1>我叫许馨月</h1>
+          <div className="portfolio-word">PORTFOLIO</div>
+          <h2>视觉设计师</h2>
+          <p className="hero-description">一位把灵感变成画面、让视觉自带生命力的 00 后设计师</p>
+          <div className="hero-actions"><a href="#work">查看我的作品 <span>↗</span></a><a href="#contact">联系我</a></div>
+          <div className="hero-tags"><span>视觉系统 × AI 工作流</span><span>平面 × 三维 × 动效</span></div>
+        </div>
+        <div className="hero-portrait" aria-label="个人头像占位"><div><span>PORTRAIT</span><small>后续添加头像</small></div><aside><b>NOW</b><span>开放合作 / 作品交流</span></aside></div>
+      </div>
+      <div className="hero-watermark">PORTFOLIO</div>
+      <div className="hero-projects" aria-label="精选作品快捷入口">
+        {placeholders.map((label,i)=><a href="#work" className={`hero-project hero-project-${i+1}`} key={label} aria-label={`查看作品：${label.split(" / ")[1]}`}><span>{String(i+1).padStart(2,"0")}</span><strong>{label.split(" / ")[1]}</strong><small>IMAGE PLACEHOLDER</small></a>)}
+      </div>
     </section>
     <section className="orbit-about" id="about">
       <div className="orbit orbit-one" /><div className="orbit orbit-two" />
@@ -53,7 +63,7 @@ export default function Home() {
       <div className="section-top"><p>03 / EXPERIENCE</p><span>SELECTED JOURNEY</span></div><h2 className="display-title">WORK<br />EXPERIENCE</h2>
       <div className="experience-list">{experiences.map(([date,company,role],i)=><article key={company}><span>0{i+1}</span><time>{date}</time><h3>{company}</h3><p>{role}</p><b>↗</b></article>)}</div>
     </section>
-    <section className="capabilities section-pad">
+    <section className="capabilities section-pad" id="advantages">
       <div className="section-top"><p>04 / ADVANTAGES</p><span>WHAT I DO</span></div><div className="cap-heading"><h2>CAPABILITIES</h2><p>技术不是风格本身，<br />它是放大创意的另一种语言。</p></div>
       <div className="cap-grid">{capabilities.map(([id,title,tools,text])=><article key={id}><span>{id}</span><div className="cap-shape"/><h3>{title}</h3><small>{tools}</small><p>{text}</p></article>)}</div>
     </section>

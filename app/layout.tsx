@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./home-refresh.css";
 
 export const metadata: Metadata = {
   title: "许馨月 — 视觉设计师",
