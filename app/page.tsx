@@ -91,6 +91,11 @@ export default function Home() {
         <div className="strength-orb" aria-hidden="true"><i/><i/><i/></div>
       </article>)}</div>
     </section>
-    <footer className="final-contact" id="contact"><div className="contact-orbit"/><div className="section-top"><p>05 / CONTACT</p><span>OPEN TO COLLABORATION</span></div><p className="contact-kicker">下一段经历，也许可以一起创造。</p><h2>LET&apos;S MAKE<br />SOMETHING <i>NEW.</i></h2><div className="contact-links"><a href="mailto:xuxinyue_2027@163.com">XUXINYUE_2027@163.COM ↗</a><a href="tel:+8613261482033">+86 132 6148 2033 ↗</a></div><div className="footer-line"><span>VISUAL DESIGN · AI · 3D · MOTION</span><span>© 2026 XINYUE XU</span><a href="#top">BACK TO TOP ↑</a></div></footer>
+    <footer className="final-contact" id="contact">
+      <div className="section-top"><p>05 / CONTACT</p><span>OPEN TO COLLABORATION</span></div>
+      <div className="contact-layout"><div className="contact-main"><p className="contact-kicker">下一段经历，也许可以一起创造。</p><h2>LET&apos;S MAKE<br />SOMETHING <i>NEW.</i></h2><div className="contact-links"><a href="mailto:xuxinyue_2027@163.com">XUXINYUE_2027@163.COM</a><a href="tel:+8613261482033">+86 132 6148 2033</a></div></div>
+      <div className="qr-placeholder" aria-label="联系二维码图片占位"><div><b>＋</b><span>添加联系二维码</span></div><small>扫码联系我</small></div></div>
+      <div className="footer-line"><span>VISUAL DESIGN · AI · 3D · MOTION</span><span>© 2026 XINYUE XU</span><a href="#top">BACK TO TOP ↑</a></div>
+    </footer>
   </main>;
 }
