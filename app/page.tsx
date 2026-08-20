@@ -81,21 +81,6 @@ export default function Home() {
         <div className="gallery-row gallery-row-bottom">{[7,8,9,10,11,12].map((n)=><a href="#work-details" className={`gallery-tile tile-${n}`} key={`bottom-${n}`} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><b>{String(n).padStart(2,"0")}</b><span>PROJECT IMAGE</span><small>后续添加作品图片</small></a>)}</div>
       </div>
     </section>
-    <section className="orbit-about" id="profile">
-      <div className="orbit orbit-one" /><div className="orbit orbit-two" />
-      {Array.from({length:10}).map((_,i)=><div className="orbit-card" style={{"--i":i} as React.CSSProperties} key={i}><span>IMAGE<br />PLACEHOLDER</span></div>)}
-      <div className="orbit-copy"><small>ABOUT / 关于我</small><h2>DESIGN<br /><em>×</em> AI</h2><p>北京科技大学 · 视觉传达设计</p></div>
-      <div className="orbit-aside"><span>AVAILABLE FOR</span><strong>VISUAL DESIGN<br />OPPORTUNITIES</strong></div>
-    </section>
-    <section className="profile-section section-pad">
-      <div className="profile-lead"><p>02 / PROFILE</p><h2>让灵感成为<br /><i>可以落地的视觉。</i></h2></div>
-      <div className="profile-grid">
-        <div className="portrait-placeholder"><span>PORTRAIT<br />PLACEHOLDER</span><b>4:5</b></div>
-        <div className="profile-copy"><p>我关注的不只是单张画面，而是视觉如何形成系统、如何适应不同媒介，以及如何借助新工具提升创作质量与效率。</p>
-          <div className="info-list"><div><span>NAME</span><b>许馨月 / XINYUE XU</b></div><div><span>EDUCATION</span><b>北京科技大学 · 视觉传达设计</b></div><div><span>FOCUS</span><b>AI VISUAL / BRAND / 3D / MOTION</b></div><div><span>CONTACT</span><a href="mailto:xuxinyue_2027@163.com">XUXINYUE_2027@163.COM ↗</a></div></div>
-        </div>
-      </div>
-    </section>
     <section className="capabilities section-pad" id="advantages">
       <div className="section-top"><p>04 / ADVANTAGES</p><span>WHAT I DO</span></div><div className="cap-heading"><h2>CAPABILITIES</h2><p>技术不是风格本身，<br />它是放大创意的另一种语言。</p></div>
       <div className="cap-grid">{capabilities.map(([id,title,tools,text])=><article key={id}><span>{id}</span><div className="cap-shape"/><h3>{title}</h3><small>{tools}</small><p>{text}</p></article>)}</div>
