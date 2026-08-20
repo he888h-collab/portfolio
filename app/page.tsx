@@ -19,13 +19,18 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 28);
+    const update = () => {
+      setScrolled(window.scrollY > 28);
+      const marker = window.scrollY + window.innerHeight * .42;
+      const sections = ["about","experience","work","advantages","contact"]
+        .map(id => document.getElementById(id)).filter((section): section is HTMLElement => Boolean(section)).sort((a,b) => a.offsetTop-b.offsetTop);
+      const current = sections.reduce((active, section) => section.offsetTop <= marker ? section.id : active, "about");
+      setActiveSection(current);
+    };
     update(); window.addEventListener("scroll", update, { passive: true });
     const reveal = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("is-visible"); }), { threshold:.18, rootMargin:"0px 0px -8%" });
     document.querySelectorAll(".timeline-item").forEach(item => reveal.observe(item));
-    const sectionWatch = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting) setActiveSection(entry.target.id); }), { threshold:.12, rootMargin:"-32% 0px -52%" });
-    document.querySelectorAll("#about,#experience,#work,#advantages,#contact").forEach(section => sectionWatch.observe(section));
-    return () => { window.removeEventListener("scroll", update); reveal.disconnect(); sectionWatch.disconnect(); };
+    return () => { window.removeEventListener("scroll", update); reveal.disconnect(); };
   }, []);
   return <main id="top">
     <section className="intro-hero" id="about">
