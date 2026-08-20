@@ -8,6 +8,7 @@ const projects = [
     title: "AI 电商视觉自动化系统",
     type: "AI WORKFLOW · E-COMMERCE",
     image: "/portfolio/ai-visual-system.jpg",
+    slug: "ai-visual-system",
     size: "wide",
   },
   {
@@ -15,6 +16,7 @@ const projects = [
     title: "蛮蛮 / 原创 IP 视觉设计",
     type: "IP DESIGN · 3D VISUAL",
     image: "/portfolio/manman-ip.jpg",
+    slug: "manman-ip",
     size: "tall",
   },
   {
@@ -22,6 +24,7 @@ const projects = [
     title: "豪士豪麦 / 品牌整合传播",
     type: "BRAND CAMPAIGN · VISUAL DESIGN",
     image: "/portfolio/haoshi-brand.jpg",
+    slug: "haoshi-brand",
     size: "standard",
   },
   {
@@ -29,6 +32,7 @@ const projects = [
     title: "雾隐岛 / UE5 场景叙事",
     type: "UE5 ENVIRONMENT · GAME VISUAL",
     image: "/portfolio/foggy-island.jpg",
+    slug: "foggy-island",
     size: "wide",
   },
 ];
@@ -124,7 +128,7 @@ export default function Home() {
         <div className="project-list shell">
           {projects.map((project) => (
             <article className={`project ${project.size}`} key={project.id}>
-              <a href="#contact" aria-label={`查看项目：${project.title}`}>
+              <a href={`/work/${project.slug}`} aria-label={`查看项目：${project.title}`}>
                 <div className="project-image">
                   <img src={project.image} alt={`${project.title} 项目视觉`} />
                   <span className="project-arrow">↗</span>
