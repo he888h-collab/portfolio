@@ -23,12 +23,12 @@ export default function Home() {
     update(); window.addEventListener("scroll", update, { passive: true });
     const reveal = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("is-visible"); }), { threshold:.18, rootMargin:"0px 0px -8%" });
     document.querySelectorAll(".timeline-item").forEach(item => reveal.observe(item));
-    const sectionWatch = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting) setActiveSection(entry.target.id); }), { threshold:.2, rootMargin:"-25% 0px -55%" });
+    const sectionWatch = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting) setActiveSection(entry.target.id); }), { threshold:.12, rootMargin:"-32% 0px -52%" });
     document.querySelectorAll("#about,#experience,#work,#advantages,#contact").forEach(section => sectionWatch.observe(section));
     return () => { window.removeEventListener("scroll", update); reveal.disconnect(); sectionWatch.disconnect(); };
   }, []);
   return <main id="top">
-    <section className="intro-hero">
+    <section className="intro-hero" id="about">
       <header className={`topbar ${scrolled ? "topbar--solid" : ""}`}>
         <nav aria-label="主导航"><a className={activeSection==="about"?"active":""} href="#about">关于我</a><a className={activeSection==="experience"?"active":""} href="#experience">工作经历</a><a className={activeSection==="work"?"active":""} href="#work">个人作品</a><a className={activeSection==="advantages"?"active":""} href="#advantages">个人优势</a><a className={activeSection==="contact"?"active":""} href="#contact">联系我</a></nav>
       </header>
@@ -58,7 +58,7 @@ export default function Home() {
         </article>)}
       </div>
     </section>
-    <section className="orbit-about" id="about">
+    <section className="orbit-about" id="profile">
       <div className="orbit orbit-one" /><div className="orbit orbit-two" />
       {Array.from({length:10}).map((_,i)=><div className="orbit-card" style={{"--i":i} as React.CSSProperties} key={i}><span>IMAGE<br />PLACEHOLDER</span></div>)}
       <div className="orbit-copy"><small>ABOUT / 关于我</small><h2>DESIGN<br /><em>×</em> AI</h2><p>北京科技大学 · 视觉传达设计</p></div>
