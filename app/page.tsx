@@ -2,171 +2,65 @@
 
 import { useEffect, useState } from "react";
 
-const projects = [
-  {
-    id: "01",
-    title: "AI 电商视觉自动化系统",
-    type: "AI WORKFLOW · E-COMMERCE",
-    image: "/portfolio/ai-visual-system.jpg",
-    slug: "ai-visual-system",
-    size: "wide",
-  },
-  {
-    id: "02",
-    title: "蛮蛮 / 原创 IP 视觉设计",
-    type: "IP DESIGN · 3D VISUAL",
-    image: "/portfolio/manman-ip.jpg",
-    slug: "manman-ip",
-    size: "tall",
-  },
-  {
-    id: "03",
-    title: "豪士豪麦 / 品牌整合传播",
-    type: "BRAND CAMPAIGN · VISUAL DESIGN",
-    image: "/portfolio/haoshi-brand.jpg",
-    slug: "haoshi-brand",
-    size: "standard",
-  },
-  {
-    id: "04",
-    title: "雾隐岛 / UE5 场景叙事",
-    type: "UE5 ENVIRONMENT · GAME VISUAL",
-    image: "/portfolio/foggy-island.jpg",
-    slug: "foggy-island",
-    size: "wide",
-  },
+const experiences = [
+  ["2026.07 — 09", "金山夏令营", "AI 视觉生成工作流实践"],
+  ["2025.10 — 2026.02", "新东方教育科技集团", "视觉设计实习生"],
+  ["2025.05 — 09", "北京与爱为舞科技有限公司", "平面设计实习生"],
 ];
-
-const strengths = [
-  ["01", "AI 视觉工作流", "熟练运用 ComfyUI、WebUI 与 Agent 工作流，将 AI 生成能力接入真实设计产出链路。"],
-  ["02", "复合视觉能力", "覆盖平面、三维、动效、UI 原型与视频包装，可独立完成从主视觉到延展物料的交付。"],
-  ["03", "品牌与电商", "具备活动主视觉、电商主图、直播封面与可复用模板体系的实战经验。"],
-  ["04", "逻辑与执行", "目标导向、自律高效，能够拆解复杂问题、预判风险并持续复盘优化工作方法。"],
+const capabilities = [
+  ["01", "AI VISUAL", "ComfyUI / WebUI / Agent", "把生成能力组织成稳定、可复用的设计工作流。"],
+  ["02", "BRAND DESIGN", "视觉系统 / 活动主视觉", "从概念到延展，建立统一且有识别度的品牌语言。"],
+  ["03", "3D & MOTION", "C4D / UE5 / 动效", "让静态概念进入空间、镜头与动态叙事。"],
+  ["04", "UI & CONTENT", "界面原型 / 视频包装", "理解信息层级，也关注传播场景中的实际落地。"],
 ];
+const placeholders = ["01 / AI VISUAL SYSTEM", "02 / IP DESIGN", "03 / BRAND CAMPAIGN", "04 / 3D ENVIRONMENT", "05 / MOTION DESIGN", "06 / MORE TO COME"];
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
-
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 36);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const update = () => setScrolled(window.scrollY > 28);
+    update(); window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
   }, []);
-
-  return (
-    <main>
-      <header className={`nav-wrap ${scrolled ? "is-scrolled" : ""}`}>
-        <nav className="nav shell" aria-label="主导航">
-          <a className="brand" href="#top" aria-label="回到首页"><span>X.</span>XINYUE</a>
-          <div className="nav-links">
-            <a href="#about">关于</a>
-            <a href="#work">项目</a>
-            <a href="#strengths">能力</a>
-          </div>
-          <a className="nav-contact" href="#contact"><i /> 联系我 <span>↗</span></a>
-        </nav>
-      </header>
-
-      <section className="hero" id="top">
-        <video className="hero-video" autoPlay muted loop playsInline poster="https://assets.lummi.ai/assets/QmTqMzCZnrcdhcCXiLUkKJowTH9KuwWgrLoPeMcZcbGpro">
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-ink-swirling-in-blue-tones-underwater-229-large.mp4" type="video/mp4" />
-        </video>
-        <div className="hero-shade" />
-        <div className="hero-grid" />
-        <div className="hero-content shell">
-          <div className="hero-kicker"><span>Visual designer · AI creator</span><span>Beijing · China</span></div>
-          <h1><span>XINYUE XU</span><span className="outline">VISUAL DESIGN</span></h1>
-          <div className="hero-bottom">
-            <p>融合设计与 AI 生成技术，<br />把视觉创意转化为稳定、高效的真实产出。</p>
-            <a className="round-link" href="#work" aria-label="浏览精选项目"><span>↘</span><small>VIEW WORK</small></a>
-          </div>
+  return <main id="top">
+    <header className={`topbar ${scrolled ? "topbar--solid" : ""}`}>
+      <a className="wordmark" href="#top"><i /> XINYUE XU</a>
+      <nav aria-label="主导航"><a href="#about">ABOUT</a><a href="#experience">EXPERIENCE</a><a href="#work">WORK</a></nav>
+      <a className="contact-pill" href="#contact">CONTACT <span>↗</span></a>
+    </header>
+    <section className="intro-hero">
+      <div className="hero-meta"><span>VISUAL DESIGNER</span><span>BEIJING · CN</span><span>PORTFOLIO / 2026</span></div>
+      <div className="hero-title"><p>HELLO, I&apos;M</p><h1>XINYUE</h1><h1 className="hero-outline">XU.</h1></div>
+      <div className="hero-note"><span>01</span><p>一位将视觉设计、三维与 AI 生成技术<br />连接起来的年轻设计师。</p></div>
+      <a className="scroll-cue" href="#about"><span>SCROLL TO EXPLORE</span><b>↓</b></a>
+    </section>
+    <section className="orbit-about" id="about">
+      <div className="orbit orbit-one" /><div className="orbit orbit-two" />
+      {Array.from({length:10}).map((_,i)=><div className="orbit-card" style={{"--i":i} as React.CSSProperties} key={i}><span>IMAGE<br />PLACEHOLDER</span></div>)}
+      <div className="orbit-copy"><small>ABOUT / 关于我</small><h2>DESIGN<br /><em>×</em> AI</h2><p>北京科技大学 · 视觉传达设计</p></div>
+      <div className="orbit-aside"><span>AVAILABLE FOR</span><strong>VISUAL DESIGN<br />OPPORTUNITIES</strong></div>
+    </section>
+    <section className="profile-section section-pad">
+      <div className="profile-lead"><p>02 / PROFILE</p><h2>让灵感成为<br /><i>可以落地的视觉。</i></h2></div>
+      <div className="profile-grid">
+        <div className="portrait-placeholder"><span>PORTRAIT<br />PLACEHOLDER</span><b>4:5</b></div>
+        <div className="profile-copy"><p>我关注的不只是单张画面，而是视觉如何形成系统、如何适应不同媒介，以及如何借助新工具提升创作质量与效率。</p>
+          <div className="info-list"><div><span>NAME</span><b>许馨月 / XINYUE XU</b></div><div><span>EDUCATION</span><b>北京科技大学 · 视觉传达设计</b></div><div><span>FOCUS</span><b>AI VISUAL / BRAND / 3D / MOTION</b></div><div><span>CONTACT</span><a href="mailto:xuxinyue_2027@163.com">XUXINYUE_2027@163.COM ↗</a></div></div>
         </div>
-        <div className="hero-index">PORTFOLIO © 2026</div>
-      </section>
-
-      <section className="about section shell" id="about">
-        <div className="section-label"><span>01</span><p>ABOUT / 个人经历</p></div>
-        <div className="about-layout">
-          <div className="portrait-wrap">
-            <img src="/portfolio/xuxinyue-portrait.jpg" alt="视觉设计师许馨月" />
-            <span className="portrait-tag">AVAILABLE FOR VISUAL DESIGN ROLE</span>
-          </div>
-          <div className="about-copy">
-            <p className="eyebrow">HELLO, I&apos;M XINYUE XU.</p>
-            <h2>设计专业出身，<br /><em>用 AI 放大创意。</em></h2>
-            <p className="intro">北京科技大学视觉传达设计本科在读。系统掌握平面、三维、动效与 UI 原型设计，熟练运用 ComfyUI、WebUI 与 Agent 工作流，将 AI 生成能力融入从主视觉、物料、海报到视频包装的完整产出链路。</p>
-            <div className="meta-grid">
-              <div><small>EDUCATION</small><strong>北京科技大学 · 视觉传达设计</strong></div>
-              <div><small>CONTACT</small><a href="mailto:xuxinyue_2027@163.com">XUXINYUE_2027@163.COM ↗</a></div>
-              <div><small>FOCUS</small><strong>AI VISUAL / BRAND / 3D / MOTION</strong></div>
-              <div><small>PHONE</small><a href="tel:+8613261482033">132 6148 2033</a></div>
-            </div>
-            <div className="experience-list">
-              <div><span>2026.07—09</span><strong>金山夏令营</strong><p>AI 视觉生成工作流实践</p></div>
-              <div><span>2025.10—2026.02</span><strong>新东方教育科技集团</strong><p>视觉设计实习生</p></div>
-              <div><span>2025.05—09</span><strong>北京与爱为舞科技有限公司</strong><p>平面设计实习生</p></div>
-            </div>
-          </div>
-        </div>
-        <div className="stats">
-          <div><strong>03</strong><span>INTERNSHIPS<br />实习经历</span></div>
-          <div><strong>04</strong><span>CORE PROJECTS<br />核心项目</span></div>
-          <div><strong>02</strong><span>DESIGN AWARDS<br />项目奖项</span></div>
-          <div><strong>05<sup>+</sup></strong><span>AI / 3D TOOLS<br />创作工具</span></div>
-        </div>
-      </section>
-
-      <section className="work section" id="work">
-        <div className="shell">
-          <div className="section-label"><span>02</span><p>SELECTED WORK / 精选项目</p></div>
-          <div className="work-head">
-            <h2>SELECTED<br /><em>WORKS</em></h2>
-            <p>从 AI 电商生产链路、原创 IP、品牌传播到 UE5 场景，<br />探索技术、叙事与商业视觉之间的连接。</p>
-          </div>
-        </div>
-        <div className="project-list shell">
-          {projects.map((project) => (
-            <article className={`project ${project.size}`} key={project.id}>
-              <a href={`/work/${project.slug}`} aria-label={`查看项目：${project.title}`}>
-                <div className="project-image">
-                  <img src={project.image} alt={`${project.title} 项目视觉`} />
-                  <span className="project-arrow">↗</span>
-                  <span className="project-no">/{project.id}</span>
-                </div>
-                <div className="project-info"><h3>{project.title}</h3><p>{project.type}</p></div>
-              </a>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="strengths section shell" id="strengths">
-        <div className="section-label"><span>03</span><p>CAPABILITIES / 个人优势</p></div>
-        <div className="strength-head"><h2>HOW I<br /><em>CREATE</em></h2><p>兼顾创意表现与生产效率，<br />让前沿工具真正服务于设计结果。</p></div>
-        <div className="strength-grid">
-          {strengths.map(([id, title, text]) => (
-            <article className="strength-card" key={id}>
-              <span>{id}</span><div className="glyph">✦</div><h3>{title}</h3><p>{text}</p><small>EXPLORE ↗</small>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <footer className="contact" id="contact">
-        <div className="contact-glow" />
-        <div className="shell contact-inner">
-          <div className="section-label"><span>04</span><p>CONTACT / 保持联系</p></div>
-          <div className="availability"><i /> OPEN TO VISUAL DESIGN OPPORTUNITIES</div>
-          <h2>LET&apos;S CREATE<br /><em>THE NEXT</em> VISUAL.</h2>
-          <a className="email" href="mailto:xuxinyue_2027@163.com">XUXINYUE_2027@163.COM <span>↗</span></a>
-          <div className="contact-bottom">
-            <p>AI 视觉 · 品牌设计 · 三维动效 · UI 原型</p>
-            <div><a href="mailto:xuxinyue_2027@163.com">EMAIL ↗</a><a href="tel:+8613261482033">PHONE ↗</a><a href="#work">PORTFOLIO ↗</a></div>
-            <p>© 2026 XINYUE XU<br />ALL RIGHTS RESERVED</p>
-          </div>
-        </div>
-      </footer>
-    </main>
-  );
+      </div>
+    </section>
+    <section className="experience section-pad" id="experience">
+      <div className="section-top"><p>03 / EXPERIENCE</p><span>SELECTED JOURNEY</span></div><h2 className="display-title">WORK<br />EXPERIENCE</h2>
+      <div className="experience-list">{experiences.map(([date,company,role],i)=><article key={company}><span>0{i+1}</span><time>{date}</time><h3>{company}</h3><p>{role}</p><b>↗</b></article>)}</div>
+    </section>
+    <section className="capabilities section-pad">
+      <div className="section-top"><p>04 / ADVANTAGES</p><span>WHAT I DO</span></div><div className="cap-heading"><h2>CAPABILITIES</h2><p>技术不是风格本身，<br />它是放大创意的另一种语言。</p></div>
+      <div className="cap-grid">{capabilities.map(([id,title,tools,text])=><article key={id}><span>{id}</span><div className="cap-shape"/><h3>{title}</h3><small>{tools}</small><p>{text}</p></article>)}</div>
+    </section>
+    <section className="work section-pad" id="work">
+      <div className="section-top"><p>05 / SELECTED WORK</p><span>IMAGE-FREE TEMPLATE</span></div><div className="work-heading"><h2>SELECTED<br /><i>WORKS</i></h2><p>当前版本暂不放置项目图片。<br />以下模块已预留标题、分类与封面位置，后续可直接替换。</p></div>
+      <div className="work-grid">{placeholders.map((label,i)=><article className={i===0||i===3?"work-card work-card--wide":"work-card"} key={label}><div className="work-placeholder"><span>ADD PROJECT IMAGE</span><b>{String(i+1).padStart(2,"0")}</b><i>↗</i></div><div><h3>{label.split(" / ")[1]}</h3><p>{label.split(" / ")[0]} / CASE STUDY PLACEHOLDER</p></div></article>)}</div>
+    </section>
+    <footer className="final-contact" id="contact"><div className="contact-orbit"/><div className="section-top"><p>06 / CONTACT</p><span>OPEN TO COLLABORATION</span></div><p className="contact-kicker">下一段经历，也许可以一起创造。</p><h2>LET&apos;S MAKE<br />SOMETHING <i>NEW.</i></h2><div className="contact-links"><a href="mailto:xuxinyue_2027@163.com">XUXINYUE_2027@163.COM ↗</a><a href="tel:+8613261482033">+86 132 6148 2033 ↗</a></div><div className="footer-line"><span>VISUAL DESIGN · AI · 3D · MOTION</span><span>© 2026 XINYUE XU</span><a href="#top">BACK TO TOP ↑</a></div></footer>
+  </main>;
 }
