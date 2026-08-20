@@ -14,6 +14,15 @@ const capabilities = [
   ["04", "UI & CONTENT", "界面原型 / 视频包装", "理解信息层级，也关注传播场景中的实际落地。"],
 ];
 const placeholders = ["01 / AI VISUAL SYSTEM", "02 / IP DESIGN", "03 / BRAND CAMPAIGN", "04 / 3D ENVIRONMENT", "05 / MOTION DESIGN", "06 / MORE TO COME"];
+const speedFrames = new WeakMap<Animation, number>();
+function glideGallerySpeed(section: HTMLElement, target: number) {
+  section.querySelectorAll<HTMLElement>(".gallery-row").forEach(row => row.getAnimations().forEach(animation => {
+    const pending = speedFrames.get(animation); if(pending) cancelAnimationFrame(pending);
+    const from = animation.playbackRate; const started = performance.now(); const duration = target === 0 ? 850 : 650;
+    const step = (now:number) => { const t=Math.min(1,(now-started)/duration); const eased=1-Math.pow(1-t,3); animation.playbackRate=from+(target-from)*eased; if(t<1) speedFrames.set(animation,requestAnimationFrame(step)); };
+    speedFrames.set(animation,requestAnimationFrame(step));
+  }));
+}
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -65,7 +74,7 @@ export default function Home() {
         </article>)}
       </div>
     </section>
-    <section className="scroll-gallery" id="work">
+    <section className="scroll-gallery" id="work" onMouseEnter={event=>glideGallerySpeed(event.currentTarget,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget,1)}>
       <div className="gallery-sticky">
         <div className="gallery-label"><span>03 / SELECTED WORKS</span><p>个人作品 / IMAGE PLACEHOLDERS</p></div>
         <div className="gallery-row gallery-row-top">{[1,2,3,4,5,6].map((n)=><a href="#work-details" className={`gallery-tile tile-${n}`} key={`top-${n}`}><b>{String(n).padStart(2,"0")}</b><span>PROJECT IMAGE</span><small>后续添加作品图片</small></a>)}</div>
