@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 
 const experiences = [
-  ["2026.07 — 09", "金山夏令营", "AI 视觉生成工作流实践"],
-  ["2025.10 — 2026.02", "新东方教育科技集团", "视觉设计实习生"],
-  ["2025.05 — 09", "北京与爱为舞科技有限公司", "平面设计实习生"],
+  { date:"2026.07 — 2026.09", company:"金山夏令营", role:"AI 视觉生成工作流实践", intro:"AI 视觉生成落地｜ComfyUI / WebUI 工作流搭建与产出", points:["将 AI 生成工具引入真实视觉产出链路，完成从风格定义、模型选型到批量出图的完整闭环。","沉淀可复用的生成模板与参数规范，提升出图效率与风格一致性，获最佳技术实现奖。"] },
+  { date:"2025.10 — 2026.02", company:"新东方教育科技集团", role:"视觉设计实习生", intro:"活动视觉设计｜主视觉与延展物料", points:["负责暑期、秋季课程宣传活动主视觉策划与出图，独立完成多套活动延展物料。","协同运营侧多轮迭代，保障品牌调性统一与活动曝光转化目标。"] },
+  { date:"2025.05 — 2025.09", company:"北京与爱为舞科技有限公司", role:"平面设计实习生", intro:"直播 / 电商视觉｜Figma 模板体系与视觉标准化", points:["负责直播封面、电商主图等视觉设计，用 Figma 搭建高复用模板体系。","基于数据反馈持续优化封面点击率，支撑直播间高效产出与视觉一致性。"] },
 ];
 const capabilities = [
   ["01", "AI VISUAL", "ComfyUI / WebUI / Agent", "把生成能力组织成稳定、可复用的设计工作流。"],
@@ -17,15 +17,20 @@ const placeholders = ["01 / AI VISUAL SYSTEM", "02 / IP DESIGN", "03 / BRAND CAM
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("about");
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 28);
     update(); window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    const reveal = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("is-visible"); }), { threshold:.18, rootMargin:"0px 0px -8%" });
+    document.querySelectorAll(".timeline-item").forEach(item => reveal.observe(item));
+    const sectionWatch = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting) setActiveSection(entry.target.id); }), { threshold:.2, rootMargin:"-25% 0px -55%" });
+    document.querySelectorAll("#about,#experience,#work,#advantages,#contact").forEach(section => sectionWatch.observe(section));
+    return () => { window.removeEventListener("scroll", update); reveal.disconnect(); sectionWatch.disconnect(); };
   }, []);
   return <main id="top">
     <section className="intro-hero">
       <header className={`topbar ${scrolled ? "topbar--solid" : ""}`}>
-        <nav aria-label="主导航"><a className="active" href="#about">关于我</a><a href="#experience">工作经历</a><a href="#work">个人作品</a><a href="#advantages">个人优势</a><a href="#contact">联系我</a></nav>
+        <nav aria-label="主导航"><a className={activeSection==="about"?"active":""} href="#about">关于我</a><a className={activeSection==="experience"?"active":""} href="#experience">工作经历</a><a className={activeSection==="work"?"active":""} href="#work">个人作品</a><a className={activeSection==="advantages"?"active":""} href="#advantages">个人优势</a><a className={activeSection==="contact"?"active":""} href="#contact">联系我</a></nav>
       </header>
       <div className="hero-layout">
         <div className="hero-copy">
@@ -44,6 +49,15 @@ export default function Home() {
         {placeholders.map((label,i)=><a href="#work" className={`hero-project hero-project-${i+1}`} key={label} aria-label={`查看作品：${label.split(" / ")[1]}`}><span>{String(i+1).padStart(2,"0")}</span><strong>{label.split(" / ")[1]}</strong><small>IMAGE PLACEHOLDER</small></a>)}
       </div>
     </section>
+    <section className="experience journey" id="experience">
+      <div className="journey-heading"><p>02 / THE JOURNEY</p><h2>Work Experience</h2><span>个人经历 / 每一段经历都在形成现在的我</span></div>
+      <div className="timeline">
+        {experiences.map((item,i)=><article className={`timeline-item timeline-item-${i%2===0?"left":"right"}`} style={{"--delay":`${i*120}ms`} as React.CSSProperties} key={item.company}>
+          <div className="timeline-card"><h3>{item.company}</h3><h4>{item.role}</h4><p>{item.intro}</p><ol>{item.points.map(point=><li key={point}>{point}</li>)}</ol></div>
+          <div className="timeline-axis"><i>{i+1}</i></div><time>{item.date}</time>
+        </article>)}
+      </div>
+    </section>
     <section className="orbit-about" id="about">
       <div className="orbit orbit-one" /><div className="orbit orbit-two" />
       {Array.from({length:10}).map((_,i)=><div className="orbit-card" style={{"--i":i} as React.CSSProperties} key={i}><span>IMAGE<br />PLACEHOLDER</span></div>)}
@@ -58,10 +72,6 @@ export default function Home() {
           <div className="info-list"><div><span>NAME</span><b>许馨月 / XINYUE XU</b></div><div><span>EDUCATION</span><b>北京科技大学 · 视觉传达设计</b></div><div><span>FOCUS</span><b>AI VISUAL / BRAND / 3D / MOTION</b></div><div><span>CONTACT</span><a href="mailto:xuxinyue_2027@163.com">XUXINYUE_2027@163.COM ↗</a></div></div>
         </div>
       </div>
-    </section>
-    <section className="experience section-pad" id="experience">
-      <div className="section-top"><p>03 / EXPERIENCE</p><span>SELECTED JOURNEY</span></div><h2 className="display-title">WORK<br />EXPERIENCE</h2>
-      <div className="experience-list">{experiences.map(([date,company,role],i)=><article key={company}><span>0{i+1}</span><time>{date}</time><h3>{company}</h3><p>{role}</p><b>↗</b></article>)}</div>
     </section>
     <section className="capabilities section-pad" id="advantages">
       <div className="section-top"><p>04 / ADVANTAGES</p><span>WHAT I DO</span></div><div className="cap-heading"><h2>CAPABILITIES</h2><p>技术不是风格本身，<br />它是放大创意的另一种语言。</p></div>
