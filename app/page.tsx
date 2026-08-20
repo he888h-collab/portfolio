@@ -78,8 +78,8 @@ export default function Home() {
     <section className="scroll-gallery" id="work">
       <div className="gallery-sticky">
         <div className="gallery-label"><span>03 / SELECTED WORKS</span><p>个人作品 / IMAGE PLACEHOLDERS</p></div>
-        <div className="gallery-row gallery-row-top">{[1,2,3,4,5,6].map((n)=><a href="#work-details" className={`gallery-tile tile-${n}`} key={`top-${n}`} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><b>{String(n).padStart(2,"0")}</b><span>PROJECT IMAGE</span><small>后续添加作品图片</small></a>)}</div>
-        <div className="gallery-row gallery-row-bottom">{[7,8,9,10,11,12].map((n)=><a href="#work-details" className={`gallery-tile tile-${n}`} key={`bottom-${n}`} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><b>{String(n).padStart(2,"0")}</b><span>PROJECT IMAGE</span><small>后续添加作品图片</small></a>)}</div>
+        <div className="gallery-row gallery-row-top">{[1,2,3,4,5,6].map((n)=><a href="#work" className={`gallery-tile tile-${n}`} key={`top-${n}`} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><b>{String(n).padStart(2,"0")}</b><span>PROJECT IMAGE</span><small>后续添加作品图片</small></a>)}</div>
+        <div className="gallery-row gallery-row-bottom">{[7,8,9,10,11,12].map((n)=><a href="#work" className={`gallery-tile tile-${n}`} key={`bottom-${n}`} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><b>{String(n).padStart(2,"0")}</b><span>PROJECT IMAGE</span><small>后续添加作品图片</small></a>)}</div>
       </div>
     </section>
     <section className="strengths-section" id="advantages">
@@ -91,10 +91,6 @@ export default function Home() {
         <div className="strength-orb" aria-hidden="true"><i/><i/><i/></div>
       </article>)}</div>
     </section>
-    <section className="work section-pad" id="work-details">
-      <div className="section-top"><p>05 / SELECTED WORK</p><span>IMAGE-FREE TEMPLATE</span></div><div className="work-heading"><h2>SELECTED<br /><i>WORKS</i></h2><p>当前版本暂不放置项目图片。<br />以下模块已预留标题、分类与封面位置，后续可直接替换。</p></div>
-      <div className="work-grid">{placeholders.map((label,i)=><article className={i===0||i===3?"work-card work-card--wide":"work-card"} key={label}><div className="work-placeholder"><span>ADD PROJECT IMAGE</span><b>{String(i+1).padStart(2,"0")}</b><i>↗</i></div><div><h3>{label.split(" / ")[1]}</h3><p>{label.split(" / ")[0]} / CASE STUDY PLACEHOLDER</p></div></article>)}</div>
-    </section>
-    <footer className="final-contact" id="contact"><div className="contact-orbit"/><div className="section-top"><p>06 / CONTACT</p><span>OPEN TO COLLABORATION</span></div><p className="contact-kicker">下一段经历，也许可以一起创造。</p><h2>LET&apos;S MAKE<br />SOMETHING <i>NEW.</i></h2><div className="contact-links"><a href="mailto:xuxinyue_2027@163.com">XUXINYUE_2027@163.COM ↗</a><a href="tel:+8613261482033">+86 132 6148 2033 ↗</a></div><div className="footer-line"><span>VISUAL DESIGN · AI · 3D · MOTION</span><span>© 2026 XINYUE XU</span><a href="#top">BACK TO TOP ↑</a></div></footer>
+    <footer className="final-contact" id="contact"><div className="contact-orbit"/><div className="section-top"><p>05 / CONTACT</p><span>OPEN TO COLLABORATION</span></div><p className="contact-kicker">下一段经历，也许可以一起创造。</p><h2>LET&apos;S MAKE<br />SOMETHING <i>NEW.</i></h2><div className="contact-links"><a href="mailto:xuxinyue_2027@163.com">XUXINYUE_2027@163.COM ↗</a><a href="tel:+8613261482033">+86 132 6148 2033 ↗</a></div><div className="footer-line"><span>VISUAL DESIGN · AI · 3D · MOTION</span><span>© 2026 XINYUE XU</span><a href="#top">BACK TO TOP ↑</a></div></footer>
   </main>;
 }
