@@ -74,11 +74,11 @@ export default function Home() {
         </article>)}
       </div>
     </section>
-    <section className="scroll-gallery" id="work" onMouseEnter={event=>glideGallerySpeed(event.currentTarget,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget,1)}>
+    <section className="scroll-gallery" id="work">
       <div className="gallery-sticky">
         <div className="gallery-label"><span>03 / SELECTED WORKS</span><p>个人作品 / IMAGE PLACEHOLDERS</p></div>
-        <div className="gallery-row gallery-row-top">{[1,2,3,4,5,6].map((n)=><a href="#work-details" className={`gallery-tile tile-${n}`} key={`top-${n}`}><b>{String(n).padStart(2,"0")}</b><span>PROJECT IMAGE</span><small>后续添加作品图片</small></a>)}</div>
-        <div className="gallery-row gallery-row-bottom">{[7,8,9,10,11,12].map((n)=><a href="#work-details" className={`gallery-tile tile-${n}`} key={`bottom-${n}`}><b>{String(n).padStart(2,"0")}</b><span>PROJECT IMAGE</span><small>后续添加作品图片</small></a>)}</div>
+        <div className="gallery-row gallery-row-top">{[1,2,3,4,5,6].map((n)=><a href="#work-details" className={`gallery-tile tile-${n}`} key={`top-${n}`} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><b>{String(n).padStart(2,"0")}</b><span>PROJECT IMAGE</span><small>后续添加作品图片</small></a>)}</div>
+        <div className="gallery-row gallery-row-bottom">{[7,8,9,10,11,12].map((n)=><a href="#work-details" className={`gallery-tile tile-${n}`} key={`bottom-${n}`} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><b>{String(n).padStart(2,"0")}</b><span>PROJECT IMAGE</span><small>后续添加作品图片</small></a>)}</div>
       </div>
     </section>
     <section className="orbit-about" id="profile">
