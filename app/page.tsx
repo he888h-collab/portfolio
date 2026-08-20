@@ -7,11 +7,12 @@ const experiences = [
   { date:"2025.10 — 2026.02", company:"新东方教育科技集团", role:"视觉设计实习生", intro:"活动视觉设计｜主视觉与延展物料", points:["负责暑期、秋季课程宣传活动主视觉策划与出图，独立完成多套活动延展物料。","协同运营侧多轮迭代，保障品牌调性统一与活动曝光转化目标。"] },
   { date:"2025.05 — 2025.09", company:"北京与爱为舞科技有限公司", role:"平面设计实习生", intro:"直播 / 电商视觉｜Figma 模板体系与视觉标准化", points:["负责直播封面、电商主图等视觉设计，用 Figma 搭建高复用模板体系。","基于数据反馈持续优化封面点击率，支撑直播间高效产出与视觉一致性。"] },
 ];
-const capabilities = [
-  ["01", "AI VISUAL", "ComfyUI / WebUI / Agent", "把生成能力组织成稳定、可复用的设计工作流。"],
-  ["02", "BRAND DESIGN", "视觉系统 / 活动主视觉", "从概念到延展，建立统一且有识别度的品牌语言。"],
-  ["03", "3D & MOTION", "C4D / UE5 / 动效", "让静态概念进入空间、镜头与动态叙事。"],
-  ["04", "UI & CONTENT", "界面原型 / 视频包装", "理解信息层级，也关注传播场景中的实际落地。"],
+const strengths = [
+  { id:"01", title:"完整项目主导能力", label:"CORE", tags:["需求拆解与规划", "进度与质量把控", "复盘沉淀"] },
+  { id:"02", title:"品牌视觉体系搭建", label:"CORE", tags:["品牌识别系统梳理", "视觉规范与延展模板", "统一多渠道传播质感"] },
+  { id:"03", title:"AI设计提效", label:"SYSTEM", tags:["AI 工作流搭建", "批量视觉生成", "参数模板沉淀"] },
+  { id:"04", title:"跨部门合作能力", label:"SYSTEM", tags:["需求快速对齐", "多方协同推进", "清晰高效沟通"] },
+  { id:"05", title:"注重效率与底层逻辑", label:"SYSTEM", tags:["结构化思考", "建立复用机制", "结果导向"] },
 ];
 const placeholders = ["01 / AI VISUAL SYSTEM", "02 / IP DESIGN", "03 / BRAND CAMPAIGN", "04 / 3D ENVIRONMENT", "05 / MOTION DESIGN", "06 / MORE TO COME"];
 const speedFrames = new WeakMap<Animation, number>();
@@ -81,9 +82,14 @@ export default function Home() {
         <div className="gallery-row gallery-row-bottom">{[7,8,9,10,11,12].map((n)=><a href="#work-details" className={`gallery-tile tile-${n}`} key={`bottom-${n}`} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><b>{String(n).padStart(2,"0")}</b><span>PROJECT IMAGE</span><small>后续添加作品图片</small></a>)}</div>
       </div>
     </section>
-    <section className="capabilities section-pad" id="advantages">
-      <div className="section-top"><p>04 / ADVANTAGES</p><span>WHAT I DO</span></div><div className="cap-heading"><h2>CAPABILITIES</h2><p>技术不是风格本身，<br />它是放大创意的另一种语言。</p></div>
-      <div className="cap-grid">{capabilities.map(([id,title,tools,text])=><article key={id}><span>{id}</span><div className="cap-shape"/><h3>{title}</h3><small>{tools}</small><p>{text}</p></article>)}</div>
+    <section className="strengths-section" id="advantages">
+      <div className="strengths-heading"><div><p>04 / ADVANTAGES</p><h2>CORE STRENGTHS <span>↘</span></h2><small>个人优势</small></div><p>让创意、系统与协作<br />共同推动设计落地。</p></div>
+      <div className="strengths-grid">{strengths.map((item)=><article className="strength-card" key={item.id} tabIndex={0}>
+        <div className="strength-meta"><span>{item.id}</span><small>{item.label}</small></div>
+        <h3>{item.title}<i>•</i></h3>
+        <div className="strength-tags" aria-hidden="true">{item.tags.map((tag,index)=><span style={{"--tag-index":index} as React.CSSProperties} key={tag}>{tag}</span>)}</div>
+        <div className="strength-orb" aria-hidden="true"><i/><i/><i/></div>
+      </article>)}</div>
     </section>
     <section className="work section-pad" id="work-details">
       <div className="section-top"><p>05 / SELECTED WORK</p><span>IMAGE-FREE TEMPLATE</span></div><div className="work-heading"><h2>SELECTED<br /><i>WORKS</i></h2><p>当前版本暂不放置项目图片。<br />以下模块已预留标题、分类与封面位置，后续可直接替换。</p></div>
