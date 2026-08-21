@@ -28,6 +28,12 @@ function glideGallerySpeed(section: HTMLElement, target: number) {
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
+  const [copiedContact, setCopiedContact] = useState("");
+  const copyContact = async (value:string, label:string) => {
+    await navigator.clipboard.writeText(value);
+    setCopiedContact(label);
+    window.setTimeout(() => setCopiedContact(""), 1600);
+  };
   useEffect(() => {
     const update = () => {
       setScrolled(window.scrollY > 28);
@@ -93,7 +99,7 @@ export default function Home() {
     </section>
     <footer className="final-contact" id="contact">
       <div className="section-top"><p>05 / CONTACT</p><span>OPEN TO COLLABORATION</span></div>
-      <div className="contact-layout"><div className="contact-main"><p className="contact-kicker">下一段经历，也许可以一起创造。</p><h2>LET&apos;S MAKE<br />SOMETHING <i>NEW.</i></h2><div className="contact-links"><a href="mailto:xuxinyue_2027@163.com">xuxinyue_2027@163.com</a><a href="tel:+8613261482033">+86 132 6148 2033</a></div></div>
+      <div className="contact-layout"><div className="contact-main"><p className="contact-kicker">下一段经历，也许可以一起创造。</p><h2>LET&apos;S MAKE<br />SOMETHING <i>NEW.</i></h2><div className="contact-links"><button type="button" onDoubleClick={()=>copyContact("xuxinyue_2027@163.com","email")} title="双击复制邮箱"><span>xuxinyue_2027@163.com</span><small aria-live="polite">{copiedContact==="email"?"已复制":"双击复制"}</small></button><button type="button" onDoubleClick={()=>copyContact("+86 132 6148 2033","phone")} title="双击复制电话"><span>+86 132 6148 2033</span><small aria-live="polite">{copiedContact==="phone"?"已复制":"双击复制"}</small></button></div></div>
       <div className="qr-placeholder"><img src="/images/wechat-qr.jpg" alt="许馨月的微信联系二维码" /><small>扫码联系我</small></div></div>
       <div className="footer-line"><span>VISUAL DESIGN · AI · 3D · MOTION</span><span>© 2026 XINYUE XU</span><a href="#top">BACK TO TOP ↑</a></div>
     </footer>
