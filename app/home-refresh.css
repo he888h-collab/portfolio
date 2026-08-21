@@ -48,6 +48,6 @@ body:before,body:after{content:"";position:fixed;z-index:70;left:0;right:0;heigh
 @media(max-width:950px){.contact-layout{grid-template-columns:1fr 320px;gap:40px}.qr-placeholder{min-height:400px}.contact-links button{font-size:24px}}
 @media(max-width:700px){.final-contact{padding:110px 20px 25px}.contact-layout{grid-template-columns:1fr;margin-top:30px}.final-contact h2{font-size:17vw}.contact-links{padding-top:55px}.contact-links button{font-size:21px}.qr-placeholder{min-height:340px;width:min(100%,360px);justify-self:center;border-radius:32px}.final-contact .footer-line{margin-top:32px}}
 
-.qr-placeholder{width:100%;min-height:0;aspect-ratio:1;align-self:center}
-@media(max-width:950px){.qr-placeholder{min-height:0;aspect-ratio:1}}
-@media(max-width:700px){.qr-placeholder{min-height:0;aspect-ratio:1}}
+.qr-placeholder{width:100%;min-height:0;aspect-ratio:6/7;align-self:center;justify-content:flex-start;padding-top:32px}.qr-placeholder img{width:min(80%,340px)}.qr-placeholder small{position:relative;left:auto;right:auto;bottom:auto;margin-top:auto;padding-top:32px}
+@media(max-width:950px){.qr-placeholder{min-height:0;aspect-ratio:6/7}}
+@media(max-width:700px){.qr-placeholder{min-height:0;aspect-ratio:6/7}}
