@@ -16,12 +16,12 @@ const strengths = [
 ];
 const placeholders = ["01 / AI VISUAL SYSTEM", "02 / IP DESIGN", "03 / BRAND CAMPAIGN", "04 / 3D ENVIRONMENT", "05 / MOTION DESIGN", "06 / MORE TO COME"];
 const heroProjects = [
-  { src:"/hero-projects/01-fashion.png", alt:"时尚人物视觉作品" },
-  { src:"/hero-projects/02-manman.png", alt:"MANMAN 品牌 IP 视觉作品" },
-  { src:"/hero-projects/03-horsh.png", alt:"豪士品牌互动视觉作品" },
-  { src:"/hero-projects/04-foggy-island.png", alt:"雾隐岛游戏视觉作品" },
-  { src:"/hero-projects/05-commercial.png", alt:"商业视觉设计作品合集" },
-  { src:"/hero-projects/06-red-thread.png", alt:"弑灵万丝国风视觉作品" },
+  { src:"/hero-projects/01-fashion-portrait.png", alt:"时尚人物视觉作品" },
+  { src:"/hero-projects/02-manman-portrait.png", alt:"MANMAN 品牌 IP 视觉作品" },
+  { src:"/hero-projects/03-horsh-portrait.png", alt:"豪士品牌互动视觉作品" },
+  { src:"/hero-projects/04-foggy-island-portrait.png", alt:"雾隐岛游戏视觉作品" },
+  { src:"/hero-projects/05-commercial-portrait.png", alt:"商业视觉设计作品合集" },
+  { src:"/hero-projects/06-red-thread-portrait.png", alt:"弑灵万丝国风视觉作品" },
 ];
 const speedFrames = new WeakMap<Animation, number>();
 function glideGallerySpeed(section: HTMLElement, target: number) {
