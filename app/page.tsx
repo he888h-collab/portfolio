@@ -16,12 +16,12 @@ const strengths = [
 ];
 const placeholders = ["01 / AI VISUAL SYSTEM", "02 / IP DESIGN", "03 / BRAND CAMPAIGN", "04 / 3D ENVIRONMENT", "05 / MOTION DESIGN", "06 / MORE TO COME"];
 const heroProjects = [
-  { src:"/hero-projects/01-fashion-portrait.png", alt:"时尚人物视觉作品" },
-  { src:"/hero-projects/02-manman-portrait.png", alt:"MANMAN 品牌 IP 视觉作品" },
-  { src:"/hero-projects/03-horsh-portrait.png", alt:"豪士品牌互动视觉作品" },
-  { src:"/hero-projects/04-foggy-island-portrait.png", alt:"雾隐岛游戏视觉作品" },
-  { src:"/hero-projects/05-commercial-portrait.png", alt:"商业视觉设计作品合集" },
-  { src:"/hero-projects/06-red-thread-portrait.png", alt:"弑灵万丝国风视觉作品" },
+  { src:"/hero-projects/01-fashion-portrait.png", alt:"时尚人物视觉作品", title:"AI自动化生成系统" },
+  { src:"/hero-projects/02-manman-portrait.png", alt:"MANMAN 品牌 IP 视觉作品", title:"IP设计" },
+  { src:"/hero-projects/03-horsh-portrait.png", alt:"豪士品牌互动视觉作品", title:"互动H5体验设计" },
+  { src:"/hero-projects/04-foggy-island-portrait.png", alt:"雾隐岛游戏视觉作品", title:"游戏demo" },
+  { src:"/hero-projects/05-commercial-portrait.png", alt:"商业视觉设计作品合集", title:"电商设计" },
+  { src:"/hero-projects/06-red-thread-portrait.png", alt:"弑灵万丝国风视觉作品", title:"AI短剧" },
 ];
 const speedFrames = new WeakMap<Animation, number>();
 function glideGallerySpeed(section: HTMLElement, target: number) {
@@ -77,7 +77,7 @@ export default function Home() {
       </div>
       <div className="hero-watermark">PORTFOLIO</div>
       <div className="hero-projects" aria-label="精选作品快捷入口">
-        {heroProjects.map((project,i)=><a href="#work" className={`hero-project hero-project-${i+1}`} key={project.src} aria-label={`查看作品：${project.alt}`}><img src={project.src} alt={project.alt} /><span>{String(i+1).padStart(2,"0")}</span></a>)}
+        {heroProjects.map((project,i)=><a href="#work" className={`hero-project hero-project-${i+1}`} key={project.src} aria-label={`查看作品：${project.title}`}><img src={project.src} alt={project.alt} /><span className="hero-project-number">{String(i+1).padStart(2,"0")}</span><strong className="hero-project-title">{project.title}</strong></a>)}
       </div>
     </section>
     <section className="experience journey" id="experience">
