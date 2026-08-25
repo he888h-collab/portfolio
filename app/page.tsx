@@ -16,7 +16,7 @@ const strengths = [
 ];
 const placeholders = ["01 / AI VISUAL SYSTEM", "02 / IP DESIGN", "03 / BRAND CAMPAIGN", "04 / 3D ENVIRONMENT", "05 / MOTION DESIGN", "06 / MORE TO COME"];
 const heroProjects = [
-  { src:"/hero-projects/01-fashion-portrait.png", alt:"时尚人物视觉作品", title:"AI自动化生成系统" },
+  { src:"/hero-projects/01-fashion-portrait.png", alt:"时尚人物视觉作品", title:"ComfyUI工作流" },
   { src:"/hero-projects/02-manman-portrait.png", alt:"MANMAN 品牌 IP 视觉作品", title:"IP设计" },
   { src:"/hero-projects/03-horsh-portrait.png", alt:"豪士品牌互动视觉作品", title:"互动H5体验设计" },
   { src:"/hero-projects/04-foggy-island-portrait.png", alt:"雾隐岛游戏视觉作品", title:"游戏demo" },
