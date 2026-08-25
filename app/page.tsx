@@ -77,7 +77,7 @@ export default function Home() {
       </div>
       <div className="hero-watermark">PORTFOLIO</div>
       <div className="hero-projects" aria-label="精选作品快捷入口">
-        {heroProjects.map((project,i)=><a href="#work" className={`hero-project hero-project-${i+1}`} key={project.src} aria-label={`查看作品：${project.title}`}><img src={project.src} alt={project.alt} /><span className="hero-project-number">{String(i+1).padStart(2,"0")}</span><strong className="hero-project-title">{project.title}</strong></a>)}
+        {heroProjects.map((project,i)=><a href="#work" className={`hero-project hero-project-${i+1}`} key={project.src} aria-label={`查看作品：${project.title}`}><img src={project.src} alt={project.alt} /><span className="hero-project-number">{String(i+1).padStart(2,"0")}</span><span className="hero-project-title">{project.title}</span></a>)}
       </div>
     </section>
     <section className="experience journey" id="experience">
