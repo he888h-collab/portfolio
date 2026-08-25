@@ -15,6 +15,14 @@ const strengths = [
   { id:"05", title:"注重效率与底层逻辑", label:"SYSTEM", tags:["结构化思考", "建立复用机制", "结果导向"] },
 ];
 const placeholders = ["01 / AI VISUAL SYSTEM", "02 / IP DESIGN", "03 / BRAND CAMPAIGN", "04 / 3D ENVIRONMENT", "05 / MOTION DESIGN", "06 / MORE TO COME"];
+const heroProjects = [
+  { src:"/hero-projects/01-fashion.png", alt:"时尚人物视觉作品" },
+  { src:"/hero-projects/02-manman.png", alt:"MANMAN 品牌 IP 视觉作品" },
+  { src:"/hero-projects/03-horsh.png", alt:"豪士品牌互动视觉作品" },
+  { src:"/hero-projects/04-foggy-island.png", alt:"雾隐岛游戏视觉作品" },
+  { src:"/hero-projects/05-commercial.png", alt:"商业视觉设计作品合集" },
+  { src:"/hero-projects/06-red-thread.png", alt:"弑灵万丝国风视觉作品" },
+];
 const speedFrames = new WeakMap<Animation, number>();
 function glideGallerySpeed(section: HTMLElement, target: number) {
   section.querySelectorAll<HTMLElement>(".gallery-row").forEach(row => row.getAnimations().forEach(animation => {
@@ -69,7 +77,7 @@ export default function Home() {
       </div>
       <div className="hero-watermark">PORTFOLIO</div>
       <div className="hero-projects" aria-label="精选作品快捷入口">
-        {placeholders.map((label,i)=><a href="#work" className={`hero-project hero-project-${i+1}`} key={label} aria-label={`查看作品：${label.split(" / ")[1]}`}><span>{String(i+1).padStart(2,"0")}</span><strong>{label.split(" / ")[1]}</strong><small>IMAGE PLACEHOLDER</small></a>)}
+        {heroProjects.map((project,i)=><a href="#work" className={`hero-project hero-project-${i+1}`} key={project.src} aria-label={`查看作品：${project.alt}`}><img src={project.src} alt={project.alt} /><span>{String(i+1).padStart(2,"0")}</span></a>)}
       </div>
     </section>
     <section className="experience journey" id="experience">
