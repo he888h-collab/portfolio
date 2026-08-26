@@ -31,6 +31,7 @@ const galleryWorks = [
   { src:"/work-gallery/05-foggy-island-alt.png", alt:"雾隐岛游戏视觉作品横版海报" },
   { src:"/work-gallery/06-ai-visual-system.png", alt:"AI 视觉自动化生成系统" },
 ];
+const galleryTopWorks = [galleryWorks[0], galleryWorks[2], galleryWorks[1], ...galleryWorks.slice(3)];
 const speedFrames = new WeakMap<Animation, number>();
 function glideGallerySpeed(section: HTMLElement, target: number) {
   section.querySelectorAll<HTMLElement>(".gallery-row").forEach(row => row.getAnimations().forEach(animation => {
@@ -100,7 +101,7 @@ export default function Home() {
     <section className="scroll-gallery" id="work">
       <div className="gallery-sticky">
         <div className="gallery-label"><span>03 / SELECTED WORKS</span><p>个人作品 / SELECTED PROJECTS</p></div>
-        <div className="gallery-row gallery-row-top">{galleryWorks.map((work,i)=><a href="#work" className={`gallery-tile tile-${i+1}`} key={`top-${work.src}`} aria-label={work.alt} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><img src={work.src} alt={work.alt}/><b>{String(i+1).padStart(2,"0")}</b></a>)}</div>
+        <div className="gallery-row gallery-row-top">{galleryTopWorks.map((work,i)=><a href="#work" className={`gallery-tile tile-${i+1}`} key={`top-${work.src}`} aria-label={work.alt} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><img src={work.src} alt={work.alt}/><b>{String(i+1).padStart(2,"0")}</b></a>)}</div>
         <div className="gallery-row gallery-row-bottom">{[...galleryWorks].reverse().map((work,i)=><a href="#work" className={`gallery-tile tile-${i+7}`} key={`bottom-${work.src}`} aria-label={work.alt} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><img src={work.src} alt={work.alt}/><b>{String(i+7).padStart(2,"0")}</b></a>)}</div>
       </div>
     </section>
