@@ -46,6 +46,7 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   const [copiedContact, setCopiedContact] = useState("");
+  const [openProject, setOpenProject] = useState(false);
   const copyContact = async (value:string, label:string) => {
     await navigator.clipboard.writeText(value);
     setCopiedContact(label);
@@ -67,6 +68,14 @@ export default function Home() {
     const gallery = document.getElementById("work"); if(gallery) galleryWatch.observe(gallery);
     return () => { window.removeEventListener("scroll", update); reveal.disconnect(); galleryWatch.disconnect(); };
   }, []);
+  useEffect(() => {
+    if (!openProject) return;
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === "Escape") setOpenProject(false); };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => { document.body.style.overflow = previousOverflow; window.removeEventListener("keydown", closeOnEscape); };
+  }, [openProject]);
   return <main id="top">
     <section className="intro-hero" id="about">
       <header className={`topbar ${scrolled ? "topbar--solid" : ""}`}>
@@ -86,8 +95,16 @@ export default function Home() {
       </div>
       <div className="hero-watermark">PORTFOLIO</div>
       <div className="hero-projects" aria-label="精选作品快捷入口">
-        {heroProjects.map((project,i)=><a href={project.href} className={`hero-project hero-project-${i+1}`} key={project.src} aria-label={`查看作品：${project.title}`}><img src={project.src} alt={project.alt} /><span className="hero-project-number">{String(i+1).padStart(2,"0")}</span><span className="hero-project-title">{project.title}</span></a>)}
+        {heroProjects.map((project,i)=>i===1
+          ? <button type="button" onClick={()=>setOpenProject(true)} className={`hero-project hero-project-${i+1}`} key={project.src} aria-label={`打开作品：${project.title}`}><img src={project.src} alt={project.alt} /><span className="hero-project-number">{String(i+1).padStart(2,"0")}</span><span className="hero-project-title">{project.title}</span></button>
+          : <a href={project.href} className={`hero-project hero-project-${i+1}`} key={project.src} aria-label={`查看作品：${project.title}`}><img src={project.src} alt={project.alt} /><span className="hero-project-number">{String(i+1).padStart(2,"0")}</span><span className="hero-project-title">{project.title}</span></a>)}
       </div>
+      {openProject && <div className="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" onMouseDown={event=>{if(event.target===event.currentTarget)setOpenProject(false)}}>
+        <div className="project-modal-panel">
+          <header><div><span>02 / SELECTED WORK</span><h2 id="project-modal-title">IP设计 · MANMAN</h2></div><button type="button" onClick={()=>setOpenProject(false)} aria-label="关闭作品详情">关闭 <b>×</b></button></header>
+          <div className="project-modal-scroll"><img src="/work-details/manman-ip-full.jpg" alt="MANMAN IP设计完整作品展示" /></div>
+        </div>
+      </div>}
     </section>
     <section className="experience journey" id="experience">
       <div className="journey-heading"><p>02 / THE JOURNEY</p><h2>Work Experience</h2><span>个人经历 / 每一段经历都在形成现在的我</span></div>
