@@ -82,7 +82,7 @@ export default function Home() {
           <div className="hero-actions"><a href="#work">查看我的作品 <span>↗</span></a><a href="#contact">联系我</a></div>
           <div className="hero-tags"><span>视觉系统 × AI 工作流</span><span>平面 × 三维 × 动效</span></div>
         </div>
-        <div className="hero-portrait" aria-label="许馨月个人头像"><img src="/portfolio/xuxinyue-portrait-transparent-v2.png" alt="许馨月" /><aside><b>NOW</b><span>开放合作 / 作品交流</span></aside></div>
+        <div className="hero-portrait" aria-label="许馨月个人头像"><img src="/portfolio/xuxinyue-portrait-final.png" alt="许馨月" /><aside><b>NOW</b><span>开放合作 / 作品交流</span></aside></div>
       </div>
       <div className="hero-watermark">PORTFOLIO</div>
       <div className="hero-projects" aria-label="精选作品快捷入口">
