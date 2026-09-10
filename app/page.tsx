@@ -25,11 +25,11 @@ const heroProjects = [
 ];
 const galleryWorks = [
   { src:"/work-gallery/01-foggy-island.png", alt:"雾隐岛游戏视觉作品" },
-  { src:"/work-gallery/02-manman.png", alt:"MANMAN IP 设计作品" },
-  { src:"/work-gallery/03-horsh-h5.png", alt:"豪士互动 H5 体验设计" },
+  { src:"/work-gallery/02-manman.png", alt:"MANMAN IP 设计作品", modal:"ip" as const },
+  { src:"/work-gallery/03-horsh-h5.png", alt:"豪士互动 H5 体验设计", modal:"h5" as const },
   { src:"/work-gallery/04-commercial-design.png", alt:"电商视觉设计作品合集" },
   { src:"/work-gallery/05-foggy-island-alt.png", alt:"雾隐岛游戏视觉作品横版海报" },
-  { src:"/work-gallery/06-ai-visual-system.png", alt:"AI 视觉自动化生成系统" },
+  { src:"/hero-projects/06-red-thread-portrait.png", alt:"残灵万丝，绯络逆世 AI 短剧", modal:"film" as const },
 ];
 const galleryTopWorks = [galleryWorks[0], galleryWorks[2], galleryWorks[1], ...galleryWorks.slice(3)];
 const speedFrames = new WeakMap<Animation, number>();
@@ -120,8 +120,8 @@ export default function Home() {
     <section className="scroll-gallery" id="work">
       <div className="gallery-sticky">
         <div className="gallery-label"><span>03 / SELECTED WORKS</span><p>个人作品 / SELECTED PROJECTS</p></div>
-        <div className="gallery-row gallery-row-top">{galleryTopWorks.map((work,i)=><a href="#work" className={`gallery-tile tile-${i+1}`} key={`top-${work.src}`} aria-label={work.alt} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><img src={work.src} alt={work.alt}/><b>{String(i+1).padStart(2,"0")}</b></a>)}</div>
-        <div className="gallery-row gallery-row-bottom">{[...galleryWorks].reverse().map((work,i)=><a href="#work" className={`gallery-tile tile-${i+7}`} key={`bottom-${work.src}`} aria-label={work.alt} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><img src={work.src} alt={work.alt}/><b>{String(i+7).padStart(2,"0")}</b></a>)}</div>
+        <div className="gallery-row gallery-row-top">{galleryTopWorks.map((work,i)=>work.modal?<button type="button" onClick={()=>setOpenProject(work.modal)} className={`gallery-tile tile-${i+1}`} key={`top-${work.src}`} aria-label={`打开作品：${work.alt}`} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><img src={work.src} alt={work.alt}/><b>{String(i+1).padStart(2,"0")}</b></button>:<a href="#work" className={`gallery-tile tile-${i+1}`} key={`top-${work.src}`} aria-label={work.alt} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><img src={work.src} alt={work.alt}/><b>{String(i+1).padStart(2,"0")}</b></a>)}</div>
+        <div className="gallery-row gallery-row-bottom">{[...galleryWorks].reverse().map((work,i)=>work.modal?<button type="button" onClick={()=>setOpenProject(work.modal)} className={`gallery-tile tile-${i+7}`} key={`bottom-${work.src}`} aria-label={`打开作品：${work.alt}`} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><img src={work.src} alt={work.alt}/><b>{String(i+7).padStart(2,"0")}</b></button>:<a href="#work" className={`gallery-tile tile-${i+7}`} key={`bottom-${work.src}`} aria-label={work.alt} onMouseEnter={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,0)} onMouseLeave={event=>glideGallerySpeed(event.currentTarget.closest(".scroll-gallery") as HTMLElement,1)}><img src={work.src} alt={work.alt}/><b>{String(i+7).padStart(2,"0")}</b></a>)}</div>
       </div>
     </section>
     <section className="strengths-section" id="advantages">
