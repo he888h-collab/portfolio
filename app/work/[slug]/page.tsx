@@ -54,6 +54,21 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </section>
 
+      {slug === "ai-short-drama" && (
+        <section className="project-video-section">
+          <div className="detail-shell project-video-heading">
+            <p>FILM / 06 · AI SHORT DRAMA</p>
+            <h2>残灵万丝，绯络逆世</h2>
+          </div>
+          <div className="detail-shell project-video-frame">
+            <video controls playsInline preload="metadata" poster={project.image}>
+              <source src="/work-videos/ai-short-drama.mp4" type="video/mp4" />
+              您的浏览器暂不支持视频播放。
+            </video>
+          </div>
+        </section>
+      )}
+
       <section className="orbit-section">
         <div className="orbit-stage" aria-label="项目视觉预览">
           {project.gallery.slice(0, 10).concat(project.gallery.slice(0, 4)).map((image, index) => (
