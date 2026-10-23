@@ -105,7 +105,7 @@ export default function Home() {
           <header><div><span>{openProject==="workflow"?"01 / SELECTED WORK":openProject==="ip"?"02 / SELECTED WORK":openProject==="h5"?"03 / SELECTED WORK":"06 / SELECTED WORK"}</span><h2 id="project-modal-title">{openProject==="workflow"?"ComfyUI工作流 · AI视觉自动化生成系统":openProject==="ip"?"IP设计 · MANMAN":openProject==="h5"?"互动H5体验设计 · 豪士":"AI短剧 · 残灵万丝，绯络逆世"}</h2></div><button type="button" onClick={()=>setOpenProject(null)} aria-label="关闭作品详情">关闭 <b>×</b></button></header>
           {openProject==="film"
             ? <div className="project-modal-video"><video controls playsInline preload="metadata"><source src="/work-videos/ai-short-drama.mp4" type="video/mp4" />您的浏览器暂不支持视频播放。</video></div>
-            : <div className="project-modal-scroll"><img src={openProject==="workflow"?"/work-details/comfyui-workflow-full.jpg":openProject==="ip"?"/work-details/manman-ip-full.jpg":"/work-details/haoshi-h5-full.jpg"} alt={openProject==="workflow"?"ComfyUI AI视觉自动化生成系统完整作品展示":openProject==="ip"?"MANMAN IP设计完整作品展示":"豪士互动H5体验设计完整作品展示"} /></div>}
+            : <div className="project-modal-scroll"><img src={openProject==="workflow"?"/work-details/comfyui-workflow-full.png":openProject==="ip"?"/work-details/manman-ip-full.jpg":"/work-details/haoshi-h5-full.jpg"} alt={openProject==="workflow"?"ComfyUI AI视觉自动化生成系统完整作品展示":openProject==="ip"?"MANMAN IP设计完整作品展示":"豪士互动H5体验设计完整作品展示"} /></div>}
         </div>
       </div>}
     </section>
