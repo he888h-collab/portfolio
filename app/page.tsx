@@ -16,21 +16,21 @@ const strengths = [
 ];
 const placeholders = ["01 / AI VISUAL SYSTEM", "02 / IP DESIGN", "03 / BRAND CAMPAIGN", "04 / 3D ENVIRONMENT", "05 / MOTION DESIGN", "06 / MORE TO COME"];
 const heroProjects = [
-  { src:"/hero-projects/01-fashion-portrait.png", alt:"时尚人物视觉作品", title:"ComfyUI工作流", href:"/work/ai-visual-system" },
-  { src:"/hero-projects/02-manman-portrait.png", alt:"MANMAN 品牌 IP 视觉作品", title:"IP设计", href:"/work/manman-ip" },
-  { src:"/hero-projects/03-horsh-portrait.png", alt:"豪士品牌互动视觉作品", title:"互动H5体验设计", href:"/work/haoshi-brand" },
+  { src:"/hero-projects/01-fashion-portrait.png", alt:"时尚人物视觉作品", title:"ComfyUI工作流", href:"/work/ai-visual-system", modal:"workflow" as const },
+  { src:"/hero-projects/02-manman-portrait.png", alt:"MANMAN 品牌 IP 视觉作品", title:"IP设计", href:"/work/manman-ip", modal:"ip" as const },
+  { src:"/hero-projects/03-horsh-portrait.png", alt:"豪士品牌互动视觉作品", title:"互动H5体验设计", href:"/work/haoshi-brand", modal:"h5" as const },
   { src:"/hero-projects/04-foggy-island-portrait.png", alt:"雾隐岛游戏视觉作品", title:"游戏demo", href:"/work/foggy-island" },
-  { src:"/hero-projects/05-commercial-portrait.png", alt:"商业视觉设计作品合集", title:"电商设计", href:"/work/commercial-design" },
-  { src:"/hero-projects/06-red-thread-portrait.png", alt:"弑灵万丝国风视觉作品", title:"AI短剧", href:"/work/ai-short-drama" },
+  { src:"/hero-projects/06-red-thread-portrait.webp", alt:"残灵万丝，绯络逆世 AI 短剧", title:"AI短剧", href:"/work/ai-short-drama", modal:"film" as const },
+  { src:"/hero-projects/05-commercial-portrait.webp", alt:"视觉与平面设计作品合集", title:"视觉/平面合集", href:"/work/commercial-design", modal:"visual" as const },
 ];
 const galleryWorks = [
   { src:"/work-gallery/01-foggy-island.png", alt:"雾隐岛游戏视觉作品" },
   { src:"/work-gallery/02-manman.png", alt:"MANMAN IP 设计作品", modal:"ip" as const },
   { src:"/work-gallery/03-horsh-h5.png", alt:"豪士互动 H5 体验设计", modal:"h5" as const },
-  { src:"/work-gallery/04-commercial-design.png", alt:"电商视觉设计作品合集" },
+  { src:"/work-gallery/04-commercial-design.png", alt:"视觉与平面设计作品合集", modal:"visual" as const },
   { src:"/work-gallery/05-foggy-island-alt.png", alt:"雾隐岛游戏视觉作品横版海报" },
   { src:"/work-gallery/06-ai-visual-system.png", alt:"ComfyUI AI视觉自动化生成系统", modal:"workflow" as const },
-  { src:"/hero-projects/06-red-thread-portrait.png", alt:"残灵万丝，绯络逆世 AI 短剧", modal:"film" as const },
+  { src:"/hero-projects/06-red-thread-portrait.webp", alt:"残灵万丝，绯络逆世 AI 短剧", modal:"film" as const },
 ];
 const galleryTopWorks = [galleryWorks[0], galleryWorks[2], galleryWorks[1], ...galleryWorks.slice(3)];
 const speedFrames = new WeakMap<Animation, number>();
@@ -47,7 +47,7 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   const [copiedContact, setCopiedContact] = useState("");
-  const [openProject, setOpenProject] = useState<"workflow" | "ip" | "h5" | "film" | null>(null);
+  const [openProject, setOpenProject] = useState<"workflow" | "ip" | "h5" | "film" | "visual" | null>(null);
   const copyContact = async (value:string, label:string) => {
     await navigator.clipboard.writeText(value);
     setCopiedContact(label);
@@ -96,16 +96,16 @@ export default function Home() {
       </div>
       <div className="hero-watermark">PORTFOLIO</div>
       <div className="hero-projects" aria-label="精选作品快捷入口">
-        {heroProjects.map((project,i)=>i===0||i===1||i===2||i===5
-          ? <button type="button" onClick={()=>setOpenProject(i===0?"workflow":i===1?"ip":i===2?"h5":"film")} className={`hero-project hero-project-${i+1}`} key={project.src} aria-label={`打开作品：${project.title}`}><img src={project.src} alt={project.alt} /><span className="hero-project-number">{String(i+1).padStart(2,"0")}</span><span className="hero-project-title">{project.title}</span></button>
+        {heroProjects.map((project,i)=>project.modal
+          ? <button type="button" onClick={()=>setOpenProject(project.modal)} className={`hero-project hero-project-${i+1}`} key={project.src} aria-label={`打开作品：${project.title}`}><img src={project.src} alt={project.alt} /><span className="hero-project-number">{String(i+1).padStart(2,"0")}</span><span className="hero-project-title">{project.title}</span></button>
           : <a href={project.href} className={`hero-project hero-project-${i+1}`} key={project.src} aria-label={`查看作品：${project.title}`}><img src={project.src} alt={project.alt} /><span className="hero-project-number">{String(i+1).padStart(2,"0")}</span><span className="hero-project-title">{project.title}</span></a>)}
       </div>
       {openProject && <div className="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" onMouseDown={event=>{if(event.target===event.currentTarget)setOpenProject(null)}}>
         <div className="project-modal-panel">
-          <header><div><span>{openProject==="workflow"?"01 / SELECTED WORK":openProject==="ip"?"02 / SELECTED WORK":openProject==="h5"?"03 / SELECTED WORK":"06 / SELECTED WORK"}</span><h2 id="project-modal-title">{openProject==="workflow"?"ComfyUI工作流 · AI视觉自动化生成系统":openProject==="ip"?"IP设计 · MANMAN":openProject==="h5"?"互动H5体验设计 · 豪士":"AI短剧 · 残灵万丝，绯络逆世"}</h2></div><button type="button" onClick={()=>setOpenProject(null)} aria-label="关闭作品详情">关闭 <b>×</b></button></header>
+          <header><div><span>{openProject==="workflow"?"01 / SELECTED WORK":openProject==="ip"?"02 / SELECTED WORK":openProject==="h5"?"03 / SELECTED WORK":openProject==="film"?"05 / SELECTED WORK":"06 / SELECTED WORK"}</span><h2 id="project-modal-title">{openProject==="workflow"?"ComfyUI工作流 · AI视觉自动化生成系统":openProject==="ip"?"IP设计 · MANMAN":openProject==="h5"?"互动H5体验设计 · 豪士":openProject==="film"?"AI短剧 · 残灵万丝，绯络逆世":"视觉/平面合集"}</h2></div><button type="button" onClick={()=>setOpenProject(null)} aria-label="关闭作品详情">关闭 <b>×</b></button></header>
           {openProject==="film"
             ? <div className="project-modal-video"><video controls playsInline preload="metadata"><source src="/work-videos/ai-short-drama.mp4" type="video/mp4" />您的浏览器暂不支持视频播放。</video></div>
-            : <div className="project-modal-scroll"><img src={openProject==="workflow"?"/work-details/comfyui-workflow-full.webp":openProject==="ip"?"/work-details/manman-ip-full.jpg":"/work-details/haoshi-h5-full.jpg"} alt={openProject==="workflow"?"ComfyUI AI视觉自动化生成系统完整作品展示":openProject==="ip"?"MANMAN IP设计完整作品展示":"豪士互动H5体验设计完整作品展示"} /></div>}
+            : <div className="project-modal-scroll"><img src={openProject==="workflow"?"/work-details/comfyui-workflow-full.webp":openProject==="ip"?"/work-details/manman-ip-full.jpg":openProject==="h5"?"/work-details/haoshi-h5-full.jpg":"/work-details/visual-graphic-collection-full.webp"} alt={openProject==="workflow"?"ComfyUI AI视觉自动化生成系统完整作品展示":openProject==="ip"?"MANMAN IP设计完整作品展示":openProject==="h5"?"豪士互动H5体验设计完整作品展示":"视觉与平面设计作品合集完整展示"} /></div>}
         </div>
       </div>}
     </section>

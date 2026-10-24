@@ -104,13 +104,13 @@ export const projects: ProjectRecord[] = [
     titleEn: "AI SHORT DRAMA",
     type: "AI FILM · KEY VISUAL",
     year: "2026",
-    image: "/hero-projects/06-red-thread-portrait.png",
+    image: "/hero-projects/06-red-thread-portrait.webp",
     summary: "以 AI 生成流程构建东方奇幻短剧的角色、世界观与核心视觉氛围。",
     description: "围绕红线、宿命与重生的叙事意象，完成角色形象、场景氛围和主海报视觉设计，并通过统一的生成参数与后期规范保持画面风格连贯。",
     role: "视觉概念 / AI 生成 / 海报设计",
     tools: "ComfyUI · Photoshop · AI",
     outcome: "角色视觉 / 叙事海报",
-    gallery: ["/hero-projects/06-red-thread-portrait.png", "/hero-projects/06-red-thread-portrait.png", allImages[3], "/hero-projects/06-red-thread-portrait.png", allImages[2], "/hero-projects/06-red-thread-portrait.png"],
+    gallery: ["/hero-projects/06-red-thread-portrait.webp", "/hero-projects/06-red-thread-portrait.webp", allImages[3], "/hero-projects/06-red-thread-portrait.webp", allImages[2], "/hero-projects/06-red-thread-portrait.webp"],
   },
 ];
 
