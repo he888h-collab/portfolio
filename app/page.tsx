@@ -24,12 +24,12 @@ const heroProjects = [
   { src:"/hero-projects/05-commercial-portrait.webp", alt:"视觉与平面设计作品合集", title:"视觉/平面合集", href:"/work/commercial-design", modal:"visual" as const },
 ];
 const galleryWorks = [
-  { src:"/work-gallery/01-foggy-island.png", alt:"雾隐岛游戏视觉作品" },
-  { src:"/work-gallery/02-manman.png", alt:"MANMAN IP 设计作品", modal:"ip" as const },
-  { src:"/work-gallery/03-horsh-h5.png", alt:"豪士互动 H5 体验设计", modal:"h5" as const },
-  { src:"/work-gallery/04-commercial-design.png", alt:"视觉与平面设计作品合集", modal:"visual" as const },
-  { src:"/work-gallery/05-foggy-island-alt.png", alt:"雾隐岛游戏视觉作品横版海报" },
-  { src:"/work-gallery/06-ai-visual-system.png", alt:"ComfyUI AI视觉自动化生成系统", modal:"workflow" as const },
+  { src:"/work-gallery/01-foggy-island.webp", alt:"雾隐岛游戏视觉作品" },
+  { src:"/work-gallery/02-manman.webp", alt:"MANMAN IP 设计作品", modal:"ip" as const },
+  { src:"/work-gallery/03-horsh-h5.webp", alt:"豪士互动 H5 体验设计", modal:"h5" as const },
+  { src:"/work-gallery/04-commercial-design.webp", alt:"视觉与平面设计作品合集", modal:"visual" as const },
+  { src:"/work-gallery/05-foggy-island-alt.webp", alt:"雾隐岛游戏视觉作品横版海报" },
+  { src:"/work-gallery/06-ai-visual-system.webp", alt:"ComfyUI AI视觉自动化生成系统", modal:"workflow" as const },
   { src:"/hero-projects/06-red-thread-portrait.webp", alt:"残灵万丝，绯络逆世 AI 短剧", modal:"film" as const },
 ];
 const galleryTopWorks = [galleryWorks[0], galleryWorks[2], galleryWorks[1], ...galleryWorks.slice(3)];
@@ -92,7 +92,7 @@ export default function Home() {
           <div className="hero-actions"><a href="#work">查看我的作品 <span>↗</span></a><a href="#contact">联系我</a></div>
           <div className="hero-tags"><span>视觉系统 × AI 工作流</span><span>平面 × 三维 × 动效</span></div>
         </div>
-        <div className="hero-portrait" aria-label="许馨月个人头像"><img src="/portfolio/xuxinyue-portrait-final.png" alt="许馨月" /><aside><b>NOW</b><span>开放合作 / 作品交流</span></aside></div>
+        <div className="hero-portrait" aria-label="许馨月个人头像"><img src="/portfolio/xuxinyue-portrait-final.webp" alt="许馨月" /><aside><b>NOW</b><span>开放合作 / 作品交流</span></aside></div>
       </div>
       <div className="hero-watermark">PORTFOLIO</div>
       <div className="hero-projects" aria-label="精选作品快捷入口">
