@@ -69,6 +69,17 @@ export default async function ProjectPage({ params }: Props) {
         </section>
       )}
 
+      {slug === "foggy-island" ? (
+        <section className="detail-shell" aria-label="雾隐岛游戏作品详情">
+          <img
+            src="/work-details/foggy-island-full.webp"
+            alt="雾隐岛 · 文明重启完整作品展示"
+            width={2400}
+            height={8103}
+            style={{ display: "block", width: "100%", height: "auto" }}
+          />
+        </section>
+      ) : <>
       <section className="orbit-section">
         <div className="orbit-stage" aria-label="项目视觉预览">
           {project.gallery.slice(0, 10).concat(project.gallery.slice(0, 4)).map((image, index) => (
@@ -115,6 +126,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
         <p className="outcome-quote">STOP OVER THINKING<br />JUST DO IT<br />FOR FUTURE</p>
       </section>
+      </>}
 
       <a className="next-project" href={`/work/${nextProject.slug}`}>
         <span>NEXT PROJECT / {nextProject.id}</span><strong>{nextProject.titleEn}</strong><i>↗</i>
